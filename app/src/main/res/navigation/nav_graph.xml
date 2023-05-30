@@ -9,14 +9,20 @@
         android:id="@+id/tournamentsFragment"
         android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsFragment"
         android:label="fragment_tournaments"
-        tools:layout="@layout/fragment_tournaments" />
+        tools:layout="@layout/fragment_tournaments" >
     <action
         android:id="@+id/action_myTournamentsFragment_to_tournamentDetailFragment"
         app:destination="@+id/tournamentsDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/tournamentsDetailFragment"
         android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsDetailFragment"
         android:label="fragment_tournaments_detail"
-        tools:layout="@layout/fragment_tournaments_detail" />
+        tools:layout="@layout/fragment_tournaments_detail">
+    <argument
+        android:name="TournamentSelected"
+        app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament"
+        />
+    </fragment>
 </navigation>
