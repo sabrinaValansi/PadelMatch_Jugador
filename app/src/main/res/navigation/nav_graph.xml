@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tournamentsFragment">
+
+    <fragment
+        android:id="@+id/tournamentsFragment"
+        android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsFragment"
+        android:label="fragment_tournaments"
+        tools:layout="@layout/fragment_tournaments" />
+    <action
+        android:id="@+id/action_myTournamentsFragment_to_tournamentDetailFragment"
+        app:destination="@+id/tournamentsDetailFragment" />
+
+    <fragment
+        android:id="@+id/tournamentsDetailFragment"
+        android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsDetailFragment"
+        android:label="fragment_tournaments_detail"
+        tools:layout="@layout/fragment_tournaments_detail" />
+</navigation>
