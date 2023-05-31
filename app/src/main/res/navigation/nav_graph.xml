@@ -5,6 +5,11 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/tournamentsFragment">
 
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="ar.edu.ort.padel_match_jugador.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
     <fragment
         android:id="@+id/tournamentsFragment"
         android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsFragment"
