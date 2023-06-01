@@ -62,7 +62,7 @@ class TournamentsFragment : Fragment() {
     fun onItemClick ( position : Int )  {
         Log.w("POSICION", position.toString())
         Log.w("LISTA", list.toString())
-        val action = TournamentsFragmentDirections.actionMyTournamentsFragmentToTournamentDetailFragment()
+        val action = TournamentsFragmentDirections.actionMyTournamentsFragmentToTournamentDetailFragment(list[position])
         findNavController().navigate(action)
     }
 }

@@ -22,8 +22,8 @@ class TournamentsViewModel : ViewModel() {
     suspend fun getTournament(): MutableList<Tournament> {
 
         var list = mutableListOf<Tournament>();
-        var uid = auth.currentUser!!.uid
-        val documents = db.collection("tournaments").whereEqualTo("uid", uid).get().await()
+        //var uid = auth.currentUser!!.uid
+        val documents = db.collection("tournaments").get().await()
         documents.forEach { data ->
             val titulo = data["titulo"] as? String ?: "Torneo default"
             val club = data["club"] as? String ?: "Torneo default"

@@ -10,8 +10,8 @@ import com.google.android.material.timepicker.TimeFormat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.app
+import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
-import com.google.firebase.storage.ktx.contentType
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
