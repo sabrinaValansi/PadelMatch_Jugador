@@ -34,7 +34,7 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var v: View
     private lateinit var detailNombre: TextView
     private lateinit var detailTitulo: TextView
-    private lateinit var detailFechaInicio: TextView
+    private lateinit var detailFechaTorneo: TextView
     private lateinit var detailCategorias: TextView
     private lateinit var detailHorario: TextView
     private lateinit var detailDireccion: TextView
@@ -42,9 +42,8 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailCupos: TextView
     private lateinit var detailCancha: TextView
     private lateinit var detailImagen: TextView
-    private lateinit var imageDisplay : ImageView
     private lateinit var viewModel: TournamentsDetailViewModel
-    private lateinit var imageUri: Uri
+
 
     private var auth: FirebaseAuth = Firebase.auth
     val db = Firebase.firestore
@@ -59,7 +58,7 @@ class TournamentsDetailFragment : Fragment() {
 
         detailTitulo = v.findViewById(R.id.textTitulo)
 
-        detailFechaInicio = v.findViewById(R.id.fechaInicio)
+        detailFechaTorneo = v.findViewById(R.id.fechaTorneo)
 
         detailCategorias = v.findViewById(R.id.categoria)
 
@@ -89,19 +88,13 @@ class TournamentsDetailFragment : Fragment() {
         val tournamentSelected: Tournament =
             TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
 
-        setValues( tournamentSelected )
-
 
         lifecycleScope.launch {
 
-            var data = viewModel.getClubsList()
-            ( detailClub as? MaterialAutoCompleteTextView)?.setSimpleItems(data);
-
-            var data_cat = viewModel.getCategoriasList()
-            ( detailCategorias as? MaterialAutoCompleteTextView)?.setSimpleItems(data_cat)
-
-            var data_material = viewModel.getMaterialesList();
-            ( detailMateriales as? MaterialAutoCompleteTextView)?.setSimpleItems(data_material)
+            val clubSelected: Club? = viewModel.getClubById(tournamentSelected.idClub)
+            if(clubSelected!= null){
+                setValues( tournamentSelected,clubSelected)
+            }
         }
 
         detailImagen.setOnClickListener {
@@ -116,14 +109,13 @@ class TournamentsDetailFragment : Fragment() {
 
         detailNombre.setText(tournamentSelected.club)
         detailTitulo.setText(tournamentSelected.titulo)
-        detailFechaInicio.setText(tournamentSelected.fecha)
+        detailFechaTorneo.setText(tournamentSelected.fecha)
         detailCategorias.setText(tournamentSelected.categoría)
         detailHorario.setText(tournamentSelected.hora)
         detailDireccion.setText(clubSelected.domicilio)
         detailLocalidad.setText(clubSelected.localidad)
         detailCupos.setText(tournamentSelected.cupos.toString())
         detailCancha.setText(tournamentSelected.materialCancha)
-     //   Glide.with(this).load(tournamentSelected.imagenTorneo).into(imageDisplay)
 
     }
 

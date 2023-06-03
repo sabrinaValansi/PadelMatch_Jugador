@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="28dp"
-            android:text="Inicio"
+            android:text="Fecha de torneo"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@id/textTitulo" />
 
         <TextView
-            android:id="@+id/fechaInicio"
+            android:id="@+id/fechaTorneo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -81,30 +81,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInicio" />
 
-        <TextView
-            android:id="@+id/textLimite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
-            android:text="Límite de inscripción"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fechaInicio" />
 
-        <TextView
-            android:id="@+id/fechaLimite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="24 de Noviembre de 2023"
-            android:textColor="#666666"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textLimite" />
 
         <TextView
             android:id="@+id/textCategoria"
@@ -117,7 +94,7 @@
             android:textStyle="bold"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fechaLimite" />
+            app:layout_constraintTop_toBottomOf="@id/fechaTorneo" />
 
         <TextView
             android:id="@+id/categoria"
@@ -288,7 +265,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginButtom="0dp"
             android:src="@drawable/google_maps"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"

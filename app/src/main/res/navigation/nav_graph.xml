@@ -25,6 +25,7 @@
         android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsDetailFragment"
         android:label="fragment_tournaments_detail"
         tools:layout="@layout/fragment_tournaments_detail">
+
     <argument
         android:name="TournamentSelected"
         app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament"
