@@ -15,6 +15,7 @@ import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import kotlin.math.log
 
 class TournamentsDetailViewModel : ViewModel() {
     // TODO: Implement the ViewModel
@@ -25,10 +26,19 @@ class TournamentsDetailViewModel : ViewModel() {
 
     suspend fun getClubById(clubId: String): Club? {
         val documentSnapshot = db.collection("clubs").document(clubId).get().await()
-        val club = documentSnapshot.toObject(Club::class.java)
-        if (club != null) {
-            club.id = documentSnapshot.id
-        }
+
+        var id= documentSnapshot.data!!.get("id") as String
+        var nombre= documentSnapshot.data!!.get("id") as String
+        var cuit= documentSnapshot.data!!.get("id") as String
+        var provincia= documentSnapshot.data!!.get("id") as String
+        var partido= documentSnapshot.data!!.get("id") as String
+        var localidad= documentSnapshot.data!!.get("id") as String
+        var domicilio= documentSnapshot.data!!.get("id") as String
+        var email= documentSnapshot.data!!.get("id") as String
+        var telefonos= documentSnapshot.data!!.get("id") as String
+        var userId= documentSnapshot.data!!.get("id") as String
+
+        val club = Club(id,nombre,cuit,provincia,partido,localidad,domicilio,email,telefonos,userId)
         return club
     }
 

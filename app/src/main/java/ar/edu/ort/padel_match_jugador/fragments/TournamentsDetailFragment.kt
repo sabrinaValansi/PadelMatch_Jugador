@@ -72,8 +72,6 @@ class TournamentsDetailFragment : Fragment() {
 
         detailCancha = v.findViewById(R.id.cancha)
 
-
-
         return v
     }
 
@@ -88,20 +86,13 @@ class TournamentsDetailFragment : Fragment() {
         val tournamentSelected: Tournament =
             TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
 
-
+        Log.w("TORNEO SELECCIONADO", tournamentSelected.toString())
         lifecycleScope.launch {
-
             val clubSelected: Club? = viewModel.getClubById(tournamentSelected.idClub)
             if(clubSelected!= null){
                 setValues( tournamentSelected,clubSelected)
             }
         }
-
-        detailImagen.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, 100)
-        }
-
     }
 
     private fun setValues(tournamentSelected: Tournament, clubSelected: Club) {
