@@ -8,7 +8,7 @@ data class Tournament(
     var club: String,
     var fecha: String,
     var hora: String,
-    var categoría: String,
+    var categoria: String,
     var materialCancha: String,
     var cupos: Number,
     var costoInscripción: Number,
@@ -16,4 +16,6 @@ data class Tournament(
     var imagenTorneo: String,
     var uid: String,
     var idClub: String,
+    var nombreCoordinador: String,
+    val telefonoCoordinador: String
 ) : Parcelable

@@ -52,7 +52,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="30"
+                android:layout_weight="35"
                 android:layout_gravity="left"
                 android:orientation="vertical">
 
@@ -84,6 +84,22 @@
                     android:layout_height="21dp"
                     android:layout_marginTop="8dp"
                     android:text="Hora :"
+                    android:textAlignment="viewStart" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="85dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Organizador :"
+                    android:textAlignment="viewStart" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="70dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Teléfono :"
                     android:textAlignment="viewStart" />
 
 
@@ -125,6 +141,23 @@
                     android:text="22:00"
                     android:textAlignment="viewStart"/>
 
+                <TextView
+                    android:id="@+id/tournament_name"
+                    android:layout_width="170dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Jorge Matinez"
+                    android:textAlignment="viewStart"/>
+
+                <TextView
+                    android:id="@+id/tournament_phone"
+                    android:layout_width="170dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="15dp"
+                    android:text="(011) 4562-5289"
+                    android:textAlignment="viewStart"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>

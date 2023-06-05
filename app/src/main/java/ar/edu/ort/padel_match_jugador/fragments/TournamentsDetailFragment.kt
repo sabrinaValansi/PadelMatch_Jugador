@@ -110,7 +110,7 @@ class TournamentsDetailFragment : Fragment() {
         detailNombre.setText(tournamentSelected.club)
         detailTitulo.setText(tournamentSelected.titulo)
         detailFechaTorneo.setText(tournamentSelected.fecha)
-        detailCategorias.setText(tournamentSelected.categoría)
+        detailCategorias.setText(tournamentSelected.categoria)
         detailHorario.setText(tournamentSelected.hora)
         detailDireccion.setText(clubSelected.domicilio)
         detailLocalidad.setText(clubSelected.localidad)

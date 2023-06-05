@@ -29,7 +29,7 @@ class TournamentsViewModel : ViewModel() {
             val club = data["club"] as? String ?: "Torneo default"
             val fecha = data["fecha"] as? String ?: "No se proporciono fecha"
             val hora = data["hora"] as? String ?: "No se proporciono hora"
-            val categoría = data["categoria"] as? String ?: "No se proporciono categoria"
+            val cat = data["categoria"] as? String ?: "No se proporciono categoria"
             val cupos = data["cupos"] as? Number ?: 0
             val costoInscripción = data["costoInscripción"] as? Number ?: 0
             val material = data["materialCancha"] as? String ?: "No se proporciono premios"
@@ -37,9 +37,12 @@ class TournamentsViewModel : ViewModel() {
             val imagenTorneo = data["imagenTorneo"] as? String ?: "No se proporciono imagenTorneo"
             val uid = data["uid"] as? String ?: ""
             val idClub = data["idClub"] as? String ?: ""
+            var nombreCoor = data["nombreCoordinador"] as? String ?: ""
+            var telefonoCood =data["telefonoCoordinador"] as? String ?: ""
 
 
-            val torneo =  Tournament(titulo, club, fecha, hora, categoría, material, cupos, costoInscripción, premios, imagenTorneo, uid, idClub)
+
+            val torneo =  Tournament(titulo, club, fecha, hora, cat, material, cupos, costoInscripción, premios, imagenTorneo, uid, idClub, nombreCoor, telefonoCood)
             list.add(torneo);
         }
 
