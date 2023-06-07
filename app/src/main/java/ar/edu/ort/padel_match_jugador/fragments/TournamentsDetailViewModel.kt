@@ -49,7 +49,6 @@ class TournamentsDetailViewModel : ViewModel() {
     }
 
 
-
     fun mostrarInformacion(context: Context, userId: String) {
 
         val imagePath = "images/$userId/flyer/"
