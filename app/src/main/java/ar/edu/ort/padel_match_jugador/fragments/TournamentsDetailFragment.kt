@@ -66,16 +66,11 @@ class TournamentsDetailFragment : Fragment() {
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
 
-        btnMapa.setOnClickListener {
-            val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
-            openLocationOnMap(direccionCompleta)
-        }
-
         return v
     }
 
     private fun openLocationOnMap(direccionCompleta: String) {
-        val uri = Uri.parse("geo:0,0?q=$direccionCompleta")
+        val uri = Uri.parse("geo:0,0?q=${direccionCompleta}")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         intent.setPackage("com.google.android.apps.maps")
 
@@ -101,13 +96,21 @@ class TournamentsDetailFragment : Fragment() {
             val clubSelected: Club? = viewModel.getClubById(tournamentSelected.idClub)
             if (clubSelected != null) {
                 setValues(tournamentSelected, clubSelected)
+                btnMapa.setOnClickListener {
+                    val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
+                    openLocationOnMap(detailDireccion.text.toString())
+                }
             }
+
+
         }
+
         btnInfo.setOnClickListener {
             val tournamentSelected: Tournament =
                 TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
             viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
         }
+
 
 
     }
@@ -117,12 +120,12 @@ class TournamentsDetailFragment : Fragment() {
     private fun setValues(tournamentSelected: Tournament, clubSelected: Club) {
         Log.w("Torneo selecionado", tournamentSelected.toString())
 
-        detailNombre.text = tournamentSelected.club
+        detailNombre.text = clubSelected.nombre
         detailTitulo.text = tournamentSelected.titulo
         detailFechaTorneo.text = tournamentSelected.fecha
-        detailCategorias.text = tournamentSelected.categoria
+        detailCategorias.text = tournamentSelected.categoría
         detailHorario.text = tournamentSelected.hora
-        detailDireccion.text = clubSelected.domicilio
+        detailDireccion.text = clubSelected.direccionCompleta
         detailLocalidad.text = clubSelected.localidad
         detailCupos.text = tournamentSelected.cupos.toString()
         detailCancha.text = tournamentSelected.materialCancha

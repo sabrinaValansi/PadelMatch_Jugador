@@ -50,7 +50,7 @@ data class TournamentAdapter(
 
         fun setTelefono(name: String) {
             val txt: TextView = view.findViewById(R.id.tournament_phone)
-
+            txt.text = name
         }
 
 
@@ -73,12 +73,11 @@ data class TournamentAdapter(
     override fun onBindViewHolder(holder: TournamentHolder, position: Int) {
 
         holder.setTitle(tournamentList[position].titulo )
-        holder.setCategory(tournamentList[position].categoria )
+        holder.setCategory(tournamentList[position].categoría )
         holder.setDate(tournamentList[position].fecha )
         holder.setHour(tournamentList[position].hora )
         holder.setOrganizador(tournamentList[position].nombreCoordinador)
         holder.setTelefono(tournamentList[position].telefonoCoordinador)
-
 
         holder.getCardLayout().setOnClickListener{
             onItemCLick(position)

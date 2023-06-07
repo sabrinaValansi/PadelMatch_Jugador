@@ -108,14 +108,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:layout_weight="70"
+                android:layout_weight="60"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tournament_category"
                     android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="21dp"
                     android:text="C4"
                     android:textAlignment="viewStart" />
 
@@ -146,7 +146,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="15dp"
                     android:text="Jorge Matinez"
-                    android:textAlignment="viewStart"/>
+                    android:textAlignment="viewStart" />
 
 
                 <TextView
@@ -156,8 +156,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="15dp"
                     android:text="(011) 4562-5289"
-                    android:textAlignment="viewStart"/>
-
+                    android:textAlignment="viewStart" />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>

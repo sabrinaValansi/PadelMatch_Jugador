@@ -40,7 +40,7 @@ class TournamentsDetailViewModel : ViewModel() {
         val telefonos = documentSnapshot.data!!.get("telefonos") as String
         val userId = documentSnapshot.data!!.get("userId") as String
 
-        val direccionCompleta = "$domicilio, $localidad, $partido, $provincia"
+        val direccionCompleta = "${domicilio}, ${partido}, ${provincia}"
 
         club = Club(id, nombre, cuit, provincia, partido, localidad, domicilio, email, telefonos, userId)
         club?.direccionCompleta = direccionCompleta
@@ -51,26 +51,12 @@ class TournamentsDetailViewModel : ViewModel() {
 
     fun mostrarInformacion(context: Context, userId: String) {
 
-        val imagePath = "images/$userId/flyer/"
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_flyer, null)
         val imageViewFlyer = dialogView.findViewById<ImageView>(R.id.imageViewFlyer)
 
-        // Descargar la imagen desde Firebase Storage
-        val imageRef = storageRef.child(imagePath)
-
-        // Obtener la URL de descarga de la imagen
-        imageRef.downloadUrl.addOnSuccessListener { uri ->
-            // Cargar la imagen en el ImageView utilizando Glide
-            Glide.with(context)
-                .load(uri)
-                .into(imageViewFlyer)
-        }.addOnFailureListener { exception ->
-            // Manejar el error de descarga de la imagen
-            Toast.makeText(context, "Error al descargar la imagen", Toast.LENGTH_SHORT).show()
-        }
+        Glide.with(context).load(userId).into(imageViewFlyer)
 
         // Resto del código para configurar el diálogo
-
         val dialogBuilder = AlertDialog.Builder(context)
             .setView(dialogView)
             .setPositiveButton("Cerrar") { dialog, _ ->
