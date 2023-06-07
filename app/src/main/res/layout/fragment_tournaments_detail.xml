@@ -270,8 +270,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnWhatsapp"
-            app:layout_constraintWidth_default="spread" />
-
+            app:layout_constraintWidth_default="spread"
+            android:onClick="openLocationOnMap" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

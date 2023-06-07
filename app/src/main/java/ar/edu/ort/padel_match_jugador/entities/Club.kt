@@ -16,4 +16,5 @@ data class Club(
     var email: String,
     var telefonos:String,
     var userId: String,
+    var direccionCompleta: String = ""
 ): Parcelable
