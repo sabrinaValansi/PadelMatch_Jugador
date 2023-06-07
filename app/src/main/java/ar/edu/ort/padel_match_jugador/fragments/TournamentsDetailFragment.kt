@@ -38,7 +38,6 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailLocalidad: TextView
     private lateinit var detailCupos: TextView
     private lateinit var detailCancha: TextView
-    private lateinit var detailImagen: TextView
     private lateinit var viewModel: TournamentsDetailViewModel
     private lateinit var btnInfo: AppCompatImageButton
     private lateinit var btnWhatsapp: AppCompatImageButton
@@ -66,13 +65,39 @@ class TournamentsDetailFragment : Fragment() {
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
 
+
+        btnInfo.setOnClickListener {
+            val tournamentSelected: Tournament =
+                TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
+            viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
+        }
+
         btnMapa.setOnClickListener {
             val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
             openLocationOnMap(direccionCompleta)
         }
 
+        btnWhatsapp.setOnClickListener {
+            enviarMensajeWhatsapp()
+        }
+
         return v
     }
+
+    private fun enviarMensajeWhatsapp() {
+        val tournamentSelected: Tournament = TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
+        val numeroTelefono = tournamentSelected.telefonoCoordinador
+
+        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$numeroTelefono")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+
+        if (intent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(intent)
+        } else {
+            Toast.makeText(requireContext(), "WhatsApp no está instalado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun openLocationOnMap(direccionCompleta: String) {
         val uri = Uri.parse("geo:0,0?q=$direccionCompleta")
@@ -103,11 +128,7 @@ class TournamentsDetailFragment : Fragment() {
                 setValues(tournamentSelected, clubSelected)
             }
         }
-        btnInfo.setOnClickListener {
-            val tournamentSelected: Tournament =
-                TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
-            viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
-        }
+
 
 
     }
