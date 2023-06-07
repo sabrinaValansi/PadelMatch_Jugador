@@ -65,12 +65,11 @@ class TournamentsDetailFragment : Fragment() {
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
 
-
-        btnInfo.setOnClickListener {
+       /* btnInfo.setOnClickListener {
             val tournamentSelected: Tournament =
                 TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
             viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
-        }
+        } */
 
 
         btnMapa.setOnClickListener {
@@ -102,7 +101,7 @@ class TournamentsDetailFragment : Fragment() {
 
 
     private fun openLocationOnMap(direccionCompleta: String) {
-        val uri = Uri.parse("geo:0,0?q=$direccionCompleta")
+        val uri = Uri.parse("geo:0,0?q=${direccionCompleta}")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         intent.setPackage("com.google.android.apps.maps")
 
@@ -128,32 +127,37 @@ class TournamentsDetailFragment : Fragment() {
             val clubSelected: Club? = viewModel.getClubById(tournamentSelected.idClub)
             if (clubSelected != null) {
                 setValues(tournamentSelected, clubSelected)
+                btnMapa.setOnClickListener {
+                    val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
+                    openLocationOnMap(detailDireccion.text.toString())
+                }
             }
+
+
         }
 
-
-
+        btnInfo.setOnClickListener {
+            val tournamentSelected: Tournament =
+                TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
+            viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
+        }
     }
 
 
 
     private fun setValues(tournamentSelected: Tournament, clubSelected: Club) {
         Log.w("Torneo selecionado", tournamentSelected.toString())
-
-
-        detailNombre.setText(tournamentSelected.club)
-        detailTitulo.setText(tournamentSelected.titulo)
-        detailFechaTorneo.setText(tournamentSelected.fecha)
-        detailCategorias.setText(tournamentSelected.categoria)
-        detailHorario.setText(tournamentSelected.hora)
-        detailDireccion.setText(clubSelected.domicilio)
-        detailLocalidad.setText(clubSelected.localidad)
-        detailCupos.setText(tournamentSelected.cupos.toString())
-        detailCancha.setText(tournamentSelected.materialCancha)
+        detailNombre.text = clubSelected.nombre
+        detailTitulo.text = tournamentSelected.titulo
+        detailFechaTorneo.text = tournamentSelected.fecha
+        detailCategorias.text = tournamentSelected.categoría
+        detailHorario.text = tournamentSelected.hora
+        detailDireccion.text = clubSelected.direccionCompleta
+        detailLocalidad.text = clubSelected.localidad
+        detailCupos.text = tournamentSelected.cupos.toString()
+        detailCancha.text = tournamentSelected.materialCancha
         btnInfo = v.findViewById(R.id.btnInfo)
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
-
-
     }
 }

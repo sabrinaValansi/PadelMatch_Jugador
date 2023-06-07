@@ -16,7 +16,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="20dp"
             android:background="#3EC0C0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -149,14 +149,16 @@
         <TextView
             android:id="@+id/direccion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="40dp"
+            android:autoText="false"
             android:text="Calle falsa 123"
+            android:textColor="#666666"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#666666"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textDireccion" />
+            app:layout_constraintTop_toBottomOf="@id/textDireccion"
+            app:layout_wrapBehaviorInParent="vertical_only" />
 
         <TextView
             android:id="@+id/textLocalidad"

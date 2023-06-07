@@ -4,6 +4,7 @@ import android.icu.text.CaseMap.Lower
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ar.edu.ort.padel_match_jugador.entities.Club
 import ar.edu.ort.padel_match_jugador.entities.Tournament
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -48,6 +49,27 @@ class TournamentsViewModel : ViewModel() {
         }
 
         return list
+    }
+
+    suspend fun getClub(id: String): Club {
+
+        lateinit var club: Club
+        val document = db.collection("clubs").whereEqualTo("id", id).get().await()
+        var data = document.documents.get(0);
+        var id = data!!["id"] as String
+        var nombre= data!!["nombre"] as String
+        var cuit= data!!["cuit"] as String
+        var provincia= data!!["provincia"] as String
+        var partido= data!!["partido"] as String
+        var localidad= data!!["localidad"] as String
+        var domicilio= data!!["domicilio"] as String
+        var email= data!!["email"] as String
+        var telefonos= data!!["telefonos"] as String
+        var userId= data!!["userId"] as String
+
+        club = Club(id,nombre,cuit,provincia,partido,localidad,domicilio,email,telefonos,userId,"INFO")
+
+        return club
     }
 }
 
