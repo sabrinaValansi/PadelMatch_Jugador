@@ -4,6 +4,7 @@ import android.icu.text.CaseMap.Lower
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ar.edu.ort.padel_match_jugador.entities.Club
 import ar.edu.ort.padel_match_jugador.entities.Tournament
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,25 +26,50 @@ class TournamentsViewModel : ViewModel() {
         //var uid = auth.currentUser!!.uid
         val documents = db.collection("tournaments").get().await()
         documents.forEach { data ->
+            val id = data["id"] as? String?: "ID"
             val titulo = data["titulo"] as? String ?: "Torneo default"
             val club = data["club"] as? String ?: "Torneo default"
             val fecha = data["fecha"] as? String ?: "No se proporciono fecha"
             val hora = data["hora"] as? String ?: "No se proporciono hora"
-            val categoría = data["categoria"] as? String ?: "No se proporciono categoria"
+            val cat = data["categoría"] as? String ?: "No se proporciono categoria"
             val cupos = data["cupos"] as? Number ?: 0
             val costoInscripción = data["costoInscripción"] as? Number ?: 0
             val material = data["materialCancha"] as? String ?: "No se proporciono premios"
             val premios = data["premios"] as? String ?: "No se proporciono premios"
             val imagenTorneo = data["imagenTorneo"] as? String ?: "No se proporciono imagenTorneo"
-            val uid = data["uid"] as? String ?: ""
+            val userId = data["uid"] as? String ?: ""
             val idClub = data["idClub"] as? String ?: ""
+            var nombreCoor = data["nombreCoordinador"] as? String ?: ""
+            var telefonoCood =data["telefonoCoordinador"] as? String ?: ""
 
 
-            val torneo =  Tournament(titulo, club, fecha, hora, categoría, material, cupos, costoInscripción, premios, imagenTorneo, uid, idClub)
+            val torneo =  Tournament(id, titulo, fecha, hora, cat, material, cupos,  costoInscripción, premios, imagenTorneo, userId, idClub, nombreCoor, telefonoCood)
+
             list.add(torneo);
         }
 
         return list
+    }
+
+    suspend fun getClub(id: String): Club {
+
+        lateinit var club: Club
+        val document = db.collection("clubs").whereEqualTo("id", id).get().await()
+        var data = document.documents.get(0);
+        var id = data!!["id"] as String
+        var nombre= data!!["nombre"] as String
+        var cuit= data!!["cuit"] as String
+        var provincia= data!!["provincia"] as String
+        var partido= data!!["partido"] as String
+        var localidad= data!!["localidad"] as String
+        var domicilio= data!!["domicilio"] as String
+        var email= data!!["email"] as String
+        var telefonos= data!!["telefonos"] as String
+        var userId= data!!["userId"] as String
+
+        club = Club(id,nombre,cuit,provincia,partido,localidad,domicilio,email,telefonos,userId,"INFO")
+
+        return club
     }
 }
 

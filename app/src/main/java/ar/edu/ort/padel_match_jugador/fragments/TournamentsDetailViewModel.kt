@@ -1,128 +1,70 @@
-package ar.edu.ort.padel_match_jugador.fragments
-
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
+import android.content.LocusId
 import android.net.Uri
 import android.util.Log
-import androidx.lifecycle.*
-import ar.edu.ort.padel_match_jugador.entities.Tournament
-import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import ar.edu.ort.padel_match_jugador.R
+import ar.edu.ort.padel_match_jugador.entities.Club
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.app
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
-import kotlinx.coroutines.*
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.tasks.await
 
 class TournamentsDetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
 
-    val db = Firebase.firestore
+    private var club: Club? = null
+    private val db = Firebase.firestore
     val storage = Firebase.storage(Firebase.app)
     val storageRef = storage.reference
 
-    fun createDatePicker(): MaterialDatePicker<Long> {
+    suspend fun getClubById(clubId: String): Club? {
+        val documentSnapshot = db.collection("clubs").document(clubId).get().await()
 
-        return MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Seleccione una fecha")
-            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-            .build();
+        val id = documentSnapshot.data!!.get("id") as String
+        val nombre = documentSnapshot.data!!.get("nombre") as String
+        val cuit = documentSnapshot.data!!.get("cuit") as String
+        val provincia = documentSnapshot.data!!.get("provincia") as String
+        val partido = documentSnapshot.data!!.get("partido") as String
+        val localidad = documentSnapshot.data!!.get("localidad") as String
+        val domicilio = documentSnapshot.data!!.get("domicilio") as String
+        val email = documentSnapshot.data!!.get("email") as String
+        val telefonos = documentSnapshot.data!!.get("telefonos") as String
+        val userId = documentSnapshot.data!!.get("userId") as String
+
+        val direccionCompleta = "${domicilio}, ${partido}, ${provincia}"
+
+        club = Club(id, nombre, cuit, provincia, partido, localidad, domicilio, email, telefonos, userId)
+        club?.direccionCompleta = direccionCompleta
+
+        return club
     }
 
 
-    fun createHourPicker(): MaterialTimePicker {
-        val timePicker =
-            MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setTitleText("Seleccione una hora")
-                .build()
-        return timePicker
-    }
+    fun mostrarInformacion(context: Context, userId: String) {
 
-    suspend fun uploadImagenStorage( data: Uri, udi: String): String {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_flyer, null)
+        val imageViewFlyer = dialogView.findViewById<ImageView>(R.id.imageViewFlyer)
 
-        var result: String = ""
+        Glide.with(context).load(userId).into(imageViewFlyer)
 
-        // Create the file metadata
-      val metadata = storageMetadata {
-            contentType = "image/jpeg"
-        }
-
-        // Upload file and metadata to the path 'images/mountains.jpg'
-        val uploadTask = storageRef.child("images/${udi}/flyer/").putFile(data, metadata)
-
-        uploadTask.addOnFailureListener {
-            // Handle unsuccessful uploads
-        }.addOnSuccessListener { taskSnapshot ->
-            // Request for URL where the image is hosted
-            storageRef.child("images/${udi}/flyer/").downloadUrl.addOnSuccessListener { uri ->
-                result = uri.toString();
+        // Resto del código para configurar el diálogo
+        val dialogBuilder = AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setPositiveButton("Cerrar") { dialog, _ ->
+                dialog.dismiss()
             }
-        }.await()
 
-        delay(1000);
-        return result
+        val dialog = dialogBuilder.create()
+        dialog.show()
     }
 
-    suspend fun getClubsList(): Array<String> {
-
-        val query =  db.collection("clubs")
-        val clubs = query.get().await();
-        val data = clubs.map { t -> t.data["nombre"] } as List<String>
-        var list = data.toTypedArray();
-        return list;
-    }
-
-    suspend fun getCategoriasList(): Array<String> {
-
-        val query =  db.collection("categorias")
-        val categorias = query.get().await();
-        val data = categorias.map { t -> t.data["nombreCategoria"] }[0] as List<String>
-        var list = data.toTypedArray();
-        return list;
-    }
-
-    suspend fun getMaterialesList(): Array<String> {
-
-        val query = db.collection("materialDeCancha")
-        val materiales = query.get().await();
-        val data = materiales.map { t -> t.data["materiales"] }[0] as List<String>
-        var list = data.toTypedArray();
-
-        return list;
-    }
-
-    suspend fun addTournament( tournament: Tournament, ): String {
-        val query = db.collection("tournaments")
-        val data = query.add(tournament)
-        var udi = "NO HAY DATOS"
-
-        data.addOnSuccessListener{ document ->
-            udi = document.id
-        }.await()
-
-        return udi;
-    }
-
-    suspend fun updateTournament( tournament: Tournament, uid: String ){
-        val query = db.collection("tournaments")
-        val data = query.document(uid).set(tournament)
-        data.addOnSuccessListener{ document ->
-            Log.w("Update Tournament", "User ${uid} was update correctly")
-        }.await()
-    }
-
-
-    suspend fun getIdClubByName( name: String): String{
-        val query =  db.collection("clubs").whereEqualTo("nombre", name)
-        var idClub = ""
-        val categorias = query.get().await();
-
-        categorias.forEach{data ->
-            idClub = data.id
-        }
-
-        return idClub;
-    }
 }
