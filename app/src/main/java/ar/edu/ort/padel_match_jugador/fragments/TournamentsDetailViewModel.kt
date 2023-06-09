@@ -40,7 +40,7 @@ class TournamentsDetailViewModel : ViewModel() {
         val telefonos = documentSnapshot.data!!.get("telefonos") as String
         val userId = documentSnapshot.data!!.get("userId") as String
 
-        val direccionCompleta = "${domicilio}, ${partido}"
+        val direccionCompleta = "${domicilio}, ${partido}, ${provincia}"
 
         club = Club(id, nombre, cuit, provincia, partido, localidad, domicilio, email, telefonos, userId)
         club?.direccionCompleta = direccionCompleta

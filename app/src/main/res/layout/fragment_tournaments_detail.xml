@@ -16,7 +16,6 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="20dp"
             android:background="#3EC0C0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
