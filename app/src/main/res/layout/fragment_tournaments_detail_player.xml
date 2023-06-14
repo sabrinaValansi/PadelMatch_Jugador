@@ -33,7 +33,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:background="#3EC0C0"
+            android:background="#B0D8CE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4" />
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_marginTop="4dp"
-            android:background="#3EC0C0"
+            android:background="#B0D8CE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
