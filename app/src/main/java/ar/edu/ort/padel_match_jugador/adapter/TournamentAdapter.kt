@@ -8,12 +8,16 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.entities.Tournament
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 data class TournamentAdapter(
     private var tournamentList: MutableList<Tournament>,
     val context: Context,
     val onItemCLick: (Int) -> Unit
 ): RecyclerView.Adapter<TournamentAdapter.TournamentHolder >()  {
+
+    val db = Firebase.firestore
 
     class TournamentHolder (v: View) : RecyclerView.ViewHolder(v) {
         private var view: View
@@ -24,6 +28,10 @@ data class TournamentAdapter(
 
         fun setTitle(name: String) {
             val txt: TextView = view.findViewById(R.id.tournament_title )
+            txt.text = name
+        }
+        fun setNombreClub(name: String) {
+            val txt: TextView = view.findViewById(R.id.tournament_club_nombre)
             txt.text = name
         }
 
@@ -54,7 +62,6 @@ data class TournamentAdapter(
         }
 
 
-
         fun getCardLayout ():CardView{
             return view.findViewById(R.id.item_torneo)
         }
@@ -78,6 +85,16 @@ data class TournamentAdapter(
         holder.setHour(tournamentList[position].hora )
         holder.setOrganizador(tournamentList[position].nombreCoordinador)
         holder.setTelefono(tournamentList[position].telefonoCoordinador)
+
+        val id = tournamentList[position].idClub
+
+        db.collection("clubs").document(id).get().addOnSuccessListener { document ->
+            if (document != null) {
+               // Log.w("ADAPTADOR", document.data!!["nombre"].toString())
+                holder.setNombreClub( document.data!!["nombre"].toString())
+            }
+        }
+
 
         holder.getCardLayout().setOnClickListener{
             onItemCLick(position)
