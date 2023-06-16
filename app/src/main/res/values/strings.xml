@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Padel-Match-Jugador</string>
+    <string name="search">Buscar</string>
+
 </resources>

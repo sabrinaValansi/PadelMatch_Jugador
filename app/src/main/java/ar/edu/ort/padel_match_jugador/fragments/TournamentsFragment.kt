@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +15,15 @@ import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.adapter.TournamentAdapter
 import ar.edu.ort.padel_match_jugador.entities.Tournament
+import ar.edu.ort.padel_match_jugador.fragments.TournamentsFragmentDirections
+import ar.edu.ort.padel_match_jugador.fragments.TournamentsViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import android.widget.TextView.OnEditorActionListener
+import android.widget.TextView
+import android.view.KeyEvent
+import androidx.appcompat.widget.SearchView
 
 class TournamentsFragment : Fragment() {
 
@@ -39,30 +46,84 @@ class TournamentsFragment : Fragment() {
         return v
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(TournamentsViewModel::class.java)
+
+        // Get the search view from the layout
+        val searchView = v.findViewById<SearchView>(R.id.search_view)
+
+        // Set a listener for menu item click
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Perform search based on the query
+                if (!query.isNullOrBlank()) {
+                    filterData(query)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Perform search as the text changes (optional)
+                if (!newText.isNullOrBlank()) {
+                    filterData(newText)
+                } else {
+                    // Si no hay texto, mostrar todos los datos sin filtrar
+                    resetFilter()
+                }
+                return true
+            }
+        })
+
+        // Set a listener for the Done/Enter key press on the keyboard
+        searchView.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                // Perform search based on the entered query
+                val query = searchView.query.toString()
+                if (!query.isNullOrBlank()) {
+                    performSearch(query)
+                }
+                return@setOnKeyListener true
+            }
+            false
+        }
+    }
+
+    private fun filterData(query: String) {
+        val filteredList = list.filter { tournament ->
+            tournament.titulo.contains(query, ignoreCase = true)
+        }
+        adapter.updateTournaments(filteredList)
+    }
+
+    private fun resetFilter() {
+        adapter.updateTournaments(list)
+    }
+
+    private fun performSearch(query: String) {
+        // TODO: Implement the logic for performing search with the given query
+        Log.d("TournamentsFragment", "Perform search for query: $query")
     }
 
     override fun onStart() {
         super.onStart()
 
         lifecycleScope.launch {
-            list = viewModel.getTournament();
+            list = viewModel.getTournament()
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = TournamentAdapter(list, requireContext()) { pos ->
+            adapter = TournamentAdapter(requireContext()) { pos ->
                 onItemClick(pos)
             }
+            adapter.updateTournaments(list) // Agregar esta línea para mostrar todas las tarjetas inicialmente
             recyclerView.adapter = adapter
         }
-
     }
 
-    fun onItemClick ( position : Int )  {
+    private fun onItemClick(position: Int) {
         Log.w("POSICION", position.toString())
         Log.w("LISTA", list.toString())
-        val action = TournamentsFragmentDirections.actionMyTournamentsFragmentToTournamentDetailFragment(list[position])
+        val action =
+            TournamentsFragmentDirections.actionMyTournamentsFragmentToTournamentDetailFragment(list[position])
         findNavController().navigate(action)
     }
 }
