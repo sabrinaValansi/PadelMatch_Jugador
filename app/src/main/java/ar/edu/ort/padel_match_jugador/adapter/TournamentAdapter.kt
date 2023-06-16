@@ -30,8 +30,23 @@ class TournamentAdapter(
     inner class TournamentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(tournament: Tournament) {
             // Bind data to views
-            val nameTextView = itemView.findViewById<TextView>(R.id.tournament_name)
+            val nameTextView = itemView.findViewById<TextView>(R.id.tournament_title)
             nameTextView.text = tournament.titulo
+
+            val categoryTextView = itemView.findViewById<TextView>(R.id.tournament_category)
+            categoryTextView.text = tournament.categoría
+
+            val fechaTextView = itemView.findViewById<TextView>(R.id.tournament_date)
+            fechaTextView.text = tournament.fecha
+
+            val horaTextView = itemView.findViewById<TextView>(R.id.tournament_hour)
+            horaTextView.text = tournament.hora
+
+            val coorNameTextView = itemView.findViewById<TextView>(R.id.tournament_name)
+            coorNameTextView.text = tournament.nombreCoordinador
+
+            val coorTelefonoTextView = itemView.findViewById<TextView>(R.id.tournament_phone)
+            coorTelefonoTextView.text = tournament.telefonoCoordinador
         }
     }
 
