@@ -13,6 +13,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TournamentsViewModel : ViewModel() {
     private lateinit var tournamentList: MutableLiveData<MutableList<Tournament>>
@@ -49,6 +51,33 @@ class TournamentsViewModel : ViewModel() {
         }
 
         return list
+    }
+
+    fun deleteOldTournaments() {
+        val currentDate = Date()
+        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()) // Cambia el formato aquí
+
+        db.collection("tournaments")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot) {
+                    val dateString = document.getString("fecha")
+                    val tournamentDate = format.parse(dateString)
+                    if (tournamentDate != null && tournamentDate.before(currentDate)) {
+                        db.collection("tournaments").document(document.id)
+                            .delete()
+                            .addOnSuccessListener {
+                                Log.d("DeleteSuccess","Successfully deleted old tournament with id: ${document.id}")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("DeleteError", "Error deleting old tournament", e)
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("FirestoreError", "Error getting documents: ", exception)
+            }
     }
 
     suspend fun getClub(id: String): Club {
