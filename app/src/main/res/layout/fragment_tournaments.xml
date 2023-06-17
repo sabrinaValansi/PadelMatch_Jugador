@@ -50,4 +50,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_view" />
 
+    <Button
+        android:id="@+id/btn_filtros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtros"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="13dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
