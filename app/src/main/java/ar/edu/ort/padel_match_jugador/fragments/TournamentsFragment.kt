@@ -23,6 +23,9 @@ import kotlinx.coroutines.launch
 import android.widget.TextView.OnEditorActionListener
 import android.widget.TextView
 import android.view.KeyEvent
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 
 class TournamentsFragment : Fragment() {
@@ -46,8 +49,21 @@ class TournamentsFragment : Fragment() {
         return v
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val filtersButton: ImageButton = view.findViewById(R.id.filters)
+        filtersButton.setOnClickListener {
+            findNavController().navigate(R.id.action_tournamentsFragment_to_filters)
+        }
+    }
+
+
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(TournamentsViewModel::class.java)
 
         // Get the search view from the layout
