@@ -1,89 +1,68 @@
 package ar.edu.ort.padel_match_jugador.adapter
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.entities.Tournament
+import ar.edu.ort.padel_match_jugador.R
 
-data class TournamentAdapter(
-    private var tournamentList: MutableList<Tournament>,
-    val context: Context,
-    val onItemCLick: (Int) -> Unit
-): RecyclerView.Adapter<TournamentAdapter.TournamentHolder >()  {
+class TournamentAdapter(
+    private val context: Context,
+    private val onItemClick: (Int) -> Unit
+) : ListAdapter<Tournament, TournamentAdapter.TournamentViewHolder>(TournamentDiffCallback()) {
 
-    class TournamentHolder (v: View) : RecyclerView.ViewHolder(v) {
-        private var view: View
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TournamentViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.tournament_item, parent, false)
+        return TournamentViewHolder(view)
+    }
 
-        init {
-            this.view = v
-        }
+    override fun onBindViewHolder(holder: TournamentViewHolder, position: Int) {
+        val tournament = getItem(position)
+        holder.bind(tournament)
+        holder.itemView.setOnClickListener { onItemClick(position) }
+    }
 
-        fun setTitle(name: String) {
-            val txt: TextView = view.findViewById(R.id.tournament_title )
-            txt.text = name
-        }
+    inner class TournamentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(tournament: Tournament) {
+            // Bind data to views
+            val nameTextView = itemView.findViewById<TextView>(R.id.tournament_title)
+            nameTextView.text = tournament.titulo
 
-        fun setCategory(name: String) {
-            val txt: TextView = view.findViewById(R.id.tournament_category )
-            txt.text = name
-        }
+            val categoryTextView = itemView.findViewById<TextView>(R.id.tournament_category)
+            categoryTextView.text = tournament.categoría
 
-        fun setDate(name: String) {
-            val txt: TextView = view.findViewById(R.id.tournament_date )
-            txt.text = name
-        }
+            val fechaTextView = itemView.findViewById<TextView>(R.id.tournament_date)
+            fechaTextView.text = tournament.fecha
 
-        fun setHour(name: String) {
-            val txt: TextView = view.findViewById(R.id.tournament_hour)
-            txt.text = name
-        }
+            val horaTextView = itemView.findViewById<TextView>(R.id.tournament_hour)
+            horaTextView.text = tournament.hora
 
-        fun setOrganizador(name: String) {
+            val coorNameTextView = itemView.findViewById<TextView>(R.id.tournament_name)
+            coorNameTextView.text = tournament.nombreCoordinador
 
-            val txt: TextView = view.findViewById(R.id.tournament_name)
-            txt.text = name
-        }
-
-        fun setTelefono(name: String) {
-            val txt: TextView = view.findViewById(R.id.tournament_phone)
-            txt.text = name
-        }
-
-
-
-        fun getCardLayout ():CardView{
-            return view.findViewById(R.id.item_torneo)
+            val coorTelefonoTextView = itemView.findViewById<TextView>(R.id.tournament_phone)
+            coorTelefonoTextView.text = tournament.telefonoCoordinador
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TournamentHolder {
-        val view =  LayoutInflater.from(parent.context).inflate(R.layout.tournament_item,parent,false)
+    private class TournamentDiffCallback : DiffUtil.ItemCallback<Tournament>() {
+        override fun areItemsTheSame(oldItem: Tournament, newItem: Tournament): Boolean {
+            return oldItem.id == newItem.id
 
-        return (TournamentHolder(view))
-    }
-
-    override fun getItemCount(): Int {
-        return tournamentList.size
-    }
-
-    override fun onBindViewHolder(holder: TournamentHolder, position: Int) {
-
-        holder.setTitle(tournamentList[position].titulo )
-        holder.setCategory(tournamentList[position].categoría )
-        holder.setDate(tournamentList[position].fecha )
-        holder.setHour(tournamentList[position].hora )
-        holder.setOrganizador(tournamentList[position].nombreCoordinador)
-        holder.setTelefono(tournamentList[position].telefonoCoordinador)
-
-        holder.getCardLayout().setOnClickListener{
-            onItemCLick(position)
         }
 
+        override fun areContentsTheSame(oldItem: Tournament, newItem: Tournament): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    // Método para actualizar la lista de torneos en el adaptador
+    fun updateTournaments(tournaments: List<Tournament>) {
+        submitList(tournaments)
     }
 }
-
-

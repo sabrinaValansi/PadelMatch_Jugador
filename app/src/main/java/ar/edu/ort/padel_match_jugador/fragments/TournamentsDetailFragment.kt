@@ -37,7 +37,6 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailLocalidad: TextView
     private lateinit var detailCupos: TextView
     private lateinit var detailCancha: TextView
-    private lateinit var detailImagen: TextView
     private lateinit var viewModel: TournamentsDetailViewModel
     private lateinit var btnInfo: AppCompatImageButton
     private lateinit var btnWhatsapp: AppCompatImageButton
@@ -65,9 +64,25 @@ class TournamentsDetailFragment : Fragment() {
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
 
+       /* btnInfo.setOnClickListener {
+            val tournamentSelected: Tournament =
+                TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
+            viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
+        } */
+
+
+        btnMapa.setOnClickListener {
+            val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
+                openLocationOnMap(direccionCompleta)
+        }
+
+        btnWhatsapp.setOnClickListener {
+            enviarMensajeWhatsapp()
+        }
+
         return v
     }
-
+    
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(TournamentsDetailViewModel::class.java)
@@ -111,6 +126,9 @@ class TournamentsDetailFragment : Fragment() {
         detailLocalidad.text = clubSelected.localidad
         detailCupos.text = tournamentSelected.cupos.toString()
         detailCancha.text = tournamentSelected.materialCancha
+        btnInfo = v.findViewById(R.id.btnInfo)
+        btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
+        btnMapa = v.findViewById(R.id.btnMapa)
     }
 
     private fun openLocationOnMap(direccionCompleta: String) {

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_myTournamentsFragment_to_tournamentDetailFragment"
             app:destination="@+id/tournamentsDetailFragment" />
+        <action
+            android:id="@+id/action_tournamentsFragment_to_filters"
+            app:destination="@id/filters" />
     </fragment>
 
     <fragment
@@ -30,4 +33,9 @@
             android:name="TournamentSelected"
             app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament" />
     </fragment>
+    <fragment
+        android:id="@+id/filters"
+        android:name="ar.edu.ort.padel_match_jugador.fragments.Filters"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filters" />
 </navigation>
