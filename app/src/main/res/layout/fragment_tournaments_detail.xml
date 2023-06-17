@@ -14,13 +14,63 @@
 
 
         <TextView
+            android:id="@+id/tituloPremio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:text="Premio"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoCosto" />
+
+        <TextView
+            android:id="@+id/textoPremio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="2000"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloPremio" />
+
+        <TextView
+            android:id="@+id/tituloCosto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:text="Costo Inscripcion"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cupos" />
+
+        <TextView
+            android:id="@+id/textoCosto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="2000"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloCosto" />
+
+        <TextView
             android:id="@+id/detail_club_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="Chacarita"
             android:textColor="#666666"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInicio2" />
@@ -33,7 +83,7 @@
             android:layout_marginTop="32dp"
             android:text="Club"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textTitulo" />
@@ -43,10 +93,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Telefono"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_coor_name" />
@@ -58,7 +108,7 @@
             android:layout_marginStart="40dp"
             android:text="+5491125794876"
             android:textColor="#666666"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -98,10 +148,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Fecha de torneo"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_club_name" />
@@ -112,12 +162,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="24/11/2023"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInicio" />
-
 
 
         <TextView
@@ -125,11 +174,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Categoría"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fechaTorneo" />
 
@@ -139,9 +188,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="C1"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textCategoria" />
 
@@ -150,11 +199,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Horario"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categoria" />
 
@@ -164,9 +213,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="20:22Hs"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textHorario" />
 
@@ -175,11 +224,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Dirección"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/horario" />
 
@@ -191,7 +240,7 @@
             android:autoText="false"
             android:text="Calle falsa 123"
             android:textColor="#666666"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textDireccion"
@@ -202,11 +251,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Localidad"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/direccion" />
 
@@ -216,9 +265,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:text="Springfield"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textLocalidad" />
 
@@ -227,11 +276,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Cupos"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/localidad" />
 
@@ -240,10 +289,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:text="2"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:text="2000"
             android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textCupos" />
 
@@ -252,13 +301,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Material Cancha"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cupos" />
+            app:layout_constraintTop_toBottomOf="@+id/textoPremio" />
 
         <TextView
             android:id="@+id/cancha"
@@ -268,7 +317,7 @@
             android:backgroundTint="#CEEDE6"
             android:text="Pasto sintético"
             android:textColor="#666666"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textCancha" />
@@ -279,7 +328,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="170dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/infodef"
             android:onClick="mostrarInformacion"
@@ -292,7 +341,7 @@
             android:id="@+id/btnWhatsapp"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="170dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/ic_whatsapp"
             android:onClick="enviarMensajeWhatsapp"
@@ -306,14 +355,14 @@
             android:id="@+id/btnMapa"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="230dp"
 
 
+            android:layout_marginTop="170dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/mapafinal"
             android:onClick="openLocationOnMap"
-            android:scaleType="fitXY"
 
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnWhatsapp"
             app:layout_constraintHorizontal_bias="0.0"
@@ -326,10 +375,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Coordinador"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cancha" />
@@ -341,7 +390,7 @@
             android:layout_marginStart="40dp"
             android:text="Alberto"
             android:textColor="#666666"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
