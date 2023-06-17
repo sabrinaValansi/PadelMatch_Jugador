@@ -54,8 +54,12 @@
         android:id="@+id/btn_filtros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filtros"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="13dp" />
+        android:backgroundTint="#BCE3D9"
+        android:text="Filtrar"
+        android:textColor="#070707"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/baseline_clear_all_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
