@@ -13,6 +13,56 @@
         android:background="#CEEDE6">
 
 
+        <TextView
+            android:id="@+id/detail_club_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Chacarita"
+            android:textColor="#666666"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInicio2" />
+
+        <TextView
+            android:id="@+id/textInicio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="32dp"
+            android:text="Club"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTitulo" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="28dp"
+            android:text="Telefono"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_coor_name" />
+
+        <TextView
+            android:id="@+id/detail_coor_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="+5491125794876"
+            android:textColor="#666666"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -27,31 +77,16 @@
 
 
         <TextView
-            android:id="@+id/textNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center"
-            android:padding="6dp"
-            android:text="CLUB CHACARITA"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view" />
-
-        <TextView
             android:id="@+id/textTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_width="197dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:padding="10dp"
             android:text="Torneo de Padel"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view" />
@@ -65,11 +100,11 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="28dp"
             android:text="Fecha de torneo"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitulo" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_club_name" />
 
         <TextView
             android:id="@+id/fechaTorneo"
@@ -241,10 +276,10 @@
 
         <ImageButton
             android:id="@+id/btnInfo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="230dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/infodef"
             android:onClick="mostrarInformacion"
@@ -255,37 +290,61 @@
 
         <ImageButton
             android:id="@+id/btnWhatsapp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="230dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/ic_whatsapp"
             android:onClick="enviarMensajeWhatsapp"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnMapa"
             app:layout_constraintTop_toBottomOf="@id/cancha" />
 
         <ImageButton
             android:id="@+id/btnMapa"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="230dp"
+
+
             android:layout_marginBottom="80dp"
             android:background="@drawable/mapafinal"
-
-
             android:onClick="openLocationOnMap"
             android:scaleType="fitXY"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnWhatsapp"
-
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/btnInfo"
             app:layout_constraintTop_toBottomOf="@id/cancha"
             app:layout_constraintWidth_default="spread" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="28dp"
+            android:text="Coordinador"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancha" />
+
+        <TextView
+            android:id="@+id/detail_coor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Alberto"
+            android:textColor="#666666"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

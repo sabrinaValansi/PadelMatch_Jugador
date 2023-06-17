@@ -10,11 +10,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.padel_match_jugador.entities.Tournament
 import ar.edu.ort.padel_match_jugador.R
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.coroutineScope
 
 class TournamentAdapter(
     private val context: Context,
     private val onItemClick: (Int) -> Unit
 ) : ListAdapter<Tournament, TournamentAdapter.TournamentViewHolder>(TournamentDiffCallback()) {
+
+    val db = Firebase.firestore
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TournamentViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.tournament_item, parent, false)
@@ -29,24 +34,32 @@ class TournamentAdapter(
 
     inner class TournamentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(tournament: Tournament) {
-            // Bind data to views
-            val nameTextView = itemView.findViewById<TextView>(R.id.tournament_title)
-            nameTextView.text = tournament.titulo
 
-            val categoryTextView = itemView.findViewById<TextView>(R.id.tournament_category)
-            categoryTextView.text = tournament.categoría
+            val docRef = db.collection("clubs").document(tournament.idClub).get()
+            docRef.addOnSuccessListener { doc ->
+                if ( doc.data != null ) {
+                    val clubNameTextView = itemView.findViewById<TextView>(R.id.tournament_club_nombre)
+                    clubNameTextView.text = doc.data!!["nombre"] as String
 
-            val fechaTextView = itemView.findViewById<TextView>(R.id.tournament_date)
-            fechaTextView.text = tournament.fecha
+                    val nameTextView = itemView.findViewById<TextView>(R.id.tournament_title)
+                    nameTextView.text = tournament.titulo
 
-            val horaTextView = itemView.findViewById<TextView>(R.id.tournament_hour)
-            horaTextView.text = tournament.hora
+                    val categoryTextView = itemView.findViewById<TextView>(R.id.tournament_category)
+                    categoryTextView.text = tournament.categoría
 
-            val coorNameTextView = itemView.findViewById<TextView>(R.id.tournament_name)
-            coorNameTextView.text = tournament.nombreCoordinador
+                    val fechaTextView = itemView.findViewById<TextView>(R.id.tournament_date)
+                    fechaTextView.text = tournament.fecha
 
-            val coorTelefonoTextView = itemView.findViewById<TextView>(R.id.tournament_phone)
-            coorTelefonoTextView.text = tournament.telefonoCoordinador
+                    val horaTextView = itemView.findViewById<TextView>(R.id.tournament_hour)
+                    horaTextView.text = tournament.hora
+
+                    val coorNameTextView = itemView.findViewById<TextView>(R.id.tournament_name)
+                    coorNameTextView.text = tournament.nombreCoordinador
+
+                    val coorTelefonoTextView = itemView.findViewById<TextView>(R.id.tournament_phone)
+                    coorTelefonoTextView.text = tournament.telefonoCoordinador
+                }
+            }
         }
     }
 

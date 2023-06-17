@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 class TournamentsDetailFragment : Fragment() {
 
     private lateinit var v: View
-    private lateinit var detailNombre: TextView
+    private lateinit var detailClubNombre: TextView
     private lateinit var detailTitulo: TextView
     private lateinit var detailFechaTorneo: TextView
     private lateinit var detailCategorias: TextView
@@ -37,6 +37,8 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailLocalidad: TextView
     private lateinit var detailCupos: TextView
     private lateinit var detailCancha: TextView
+    private lateinit var detailCoorName: TextView
+    private lateinit var detailCoorPhone: TextView
     private lateinit var viewModel: TournamentsDetailViewModel
     private lateinit var btnInfo: AppCompatImageButton
     private lateinit var btnWhatsapp: AppCompatImageButton
@@ -51,7 +53,7 @@ class TournamentsDetailFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_tournaments_detail, container, false)
 
-        detailNombre = v.findViewById(R.id.textNombre)
+        detailClubNombre = v.findViewById(R.id.detail_club_name)
         detailTitulo = v.findViewById(R.id.textTitulo)
         detailFechaTorneo = v.findViewById(R.id.fechaTorneo)
         detailCategorias = v.findViewById(R.id.categoria)
@@ -63,22 +65,8 @@ class TournamentsDetailFragment : Fragment() {
         btnInfo = v.findViewById(R.id.btnInfo)
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
-
-       /* btnInfo.setOnClickListener {
-            val tournamentSelected: Tournament =
-                TournamentsDetailFragmentArgs.fromBundle(requireArguments()).tournamentSelected
-            viewModel.mostrarInformacion(requireContext(), tournamentSelected.imagenTorneo)
-        } */
-
-
-        btnMapa.setOnClickListener {
-            val direccionCompleta = "${detailDireccion.text}, ${detailLocalidad.text}"
-                openLocationOnMap(direccionCompleta)
-        }
-
-        btnWhatsapp.setOnClickListener {
-            enviarMensajeWhatsapp()
-        }
+        detailCoorName = v.findViewById(R.id.detail_coor_name)
+        detailCoorPhone = v.findViewById(R.id.detail_coor_phone)
 
         return v
     }
@@ -117,7 +105,7 @@ class TournamentsDetailFragment : Fragment() {
 
     private fun setValues(tournamentSelected: Tournament, clubSelected: Club) {
         Log.w("Torneo selecionado", tournamentSelected.toString())
-        detailNombre.text = clubSelected.nombre
+        detailClubNombre.text = clubSelected.nombre
         detailTitulo.text = tournamentSelected.titulo
         detailFechaTorneo.text = tournamentSelected.fecha
         detailCategorias.text = tournamentSelected.categoría
@@ -126,6 +114,8 @@ class TournamentsDetailFragment : Fragment() {
         detailLocalidad.text = clubSelected.localidad
         detailCupos.text = tournamentSelected.cupos.toString()
         detailCancha.text = tournamentSelected.materialCancha
+        detailCoorName.text = tournamentSelected.nombreCoordinador
+        detailCoorPhone.text = tournamentSelected.telefonoCoordinador
         btnInfo = v.findViewById(R.id.btnInfo)
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
