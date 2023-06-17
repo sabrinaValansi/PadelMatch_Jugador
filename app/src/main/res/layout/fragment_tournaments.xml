@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#BCE3D9"
         android:text="Filtrar"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="45dp"
         android:textColor="#070707"
         app:cornerRadius="100dp"
         app:icon="@drawable/baseline_clear_all_24"
