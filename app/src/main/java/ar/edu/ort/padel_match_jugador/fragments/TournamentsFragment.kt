@@ -24,6 +24,7 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.TextView
 import android.view.KeyEvent
 import androidx.appcompat.widget.SearchView
+import org.checkerframework.common.subtyping.qual.Bottom
 
 class TournamentsFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class TournamentsFragment : Fragment() {
     private lateinit var adapter: TournamentAdapter
     private lateinit var recyclerView: RecyclerView
     private var list: MutableList<Tournament> = mutableListOf()
+    private lateinit var boton: View
 
     // Create connection with the database
     val db = Firebase.firestore
@@ -42,6 +44,13 @@ class TournamentsFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_tournaments, container, false)
         recyclerView = v.findViewById(R.id.tournament_list)
+        boton = v.findViewById(R.id.btn_filtros)
+
+        boton.setOnClickListener {
+            val action =
+                TournamentsFragmentDirections.actionTournamentsFragmentToFilters()
+            findNavController().navigate(action)
+        }
 
         return v
     }
