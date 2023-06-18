@@ -89,13 +89,15 @@ class Filters : Fragment() {
     }
 
     private fun datePickerHandler(datePicker: MaterialDatePicker<Long>, item: EditText) {
-        item.setOnClickListener{
-            datePicker.show(requireActivity().supportFragmentManager, "tag" )
-            datePicker.addOnPositiveButtonClickListener { selection ->
-                val dateString = DateFormat.format("dd/MM/yyyy", Date(selection)).toString()
-                item.setText(dateString)
+        if( !datePicker.isAdded()) {
+            item.setOnClickListener{
+                datePicker.show(requireActivity().supportFragmentManager, "tag" )
+                datePicker.addOnPositiveButtonClickListener { selection ->
+                    val dateString = DateFormat.format("dd/MM/yyyy", Date(selection)).toString()
+                    item.setText(dateString)
+                }
+
             }
-        }
     }
 
     private fun timePickerHandler(timePicker: MaterialTimePicker, item: EditText){

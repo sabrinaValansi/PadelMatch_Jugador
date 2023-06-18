@@ -61,7 +61,7 @@ class FiltersViewModel : ViewModel() {
         partido: String?,
         localidad: String?,
         categoria: String?
-    ) {
+    ): List<Tournament> {
         val query = db.collection("tournaments")
 
         fechaDesde?.let {
@@ -84,12 +84,36 @@ class FiltersViewModel : ViewModel() {
         }
 
         val result = query.get().await()
-        // val matches = result.toObjects(Tournament::class.java)
 
-        Log.w("TORNEOS FILTRADOS", result.documents.toString())
+        val list = arrayListOf<Tournament>()
 
-        //  return matches
+        result.forEach{ doc ->
+            val data = doc.data
+            val id = data["id"] as String
+            val titulo = data["titulo"] as String
+            val club = data["club"] as String
+            val fecha = data["fecha"] as String
+            val hora = data["hora"] as String
+            val cat = data["categoría"] as String
+            val cupos = data["cupos"] as Number
+            val costoInscripción = data["costoInscripción"] as Number
+            val material = data["materialCancha"] as String
+            val premios = data["premios"] as String
+            val imagenTorneo = data["imagenTorneo"] as String
+            val userId = data["uid"] as String
+            val idClub = data["idClub"] as String
+            var nombreCoor = data["nombreCoordinador"] as String
+            var telefonoCood =data["telefonoCoordinador"] as String
+
+            val torneo = Tournament(id, titulo, fecha, hora, cat, material, cupos, costoInscripción, premios, imagenTorneo, userId, idClub, nombreCoor, telefonoCood)
+            list.add(torneo)
+        }
+
+        Log.w("TORNEOS FILTRADOS", list.toString())
+
+        return list
     }
+
 
 
 }
