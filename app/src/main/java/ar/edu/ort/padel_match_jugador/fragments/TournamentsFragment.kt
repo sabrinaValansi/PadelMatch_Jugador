@@ -29,6 +29,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import org.checkerframework.common.subtyping.qual.Bottom
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class TournamentsFragment : Fragment() {
 
@@ -144,7 +147,10 @@ class TournamentsFragment : Fragment() {
         super.onStart()
 
         lifecycleScope.launch {
-            list = viewModel.getTournament()
+            val originalList = viewModel.getTournament()
+            val sortedList = originalList.sortedBy { parseDate(it.fecha) }
+            list.clear()
+            list.addAll(sortedList)
             // Load all club names
             for (tournament in list) {
                 val clubName = detailViewModel.getClubById(tournament.idClub)?.nombre
@@ -158,6 +164,11 @@ class TournamentsFragment : Fragment() {
             recyclerView.adapter = adapter
         }
     }
+    private fun parseDate(dateString: String): Date {
+        val format = SimpleDateFormat("dd/mm/yyyy", Locale.getDefault())
+        return format.parse(dateString) ?: Date()
+    }
+
 
     private fun onItemClick(position: Int) {
         Log.w("POSICION", position.toString())
