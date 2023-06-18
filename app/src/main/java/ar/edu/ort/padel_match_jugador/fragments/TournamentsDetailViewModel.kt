@@ -49,14 +49,16 @@ class TournamentsDetailViewModel : ViewModel() {
     }
 
 
-    fun mostrarInformacion(context: Context, userId: String) {
-
+    fun mostrarInformacion(context: Context, img: String) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_flyer, null)
         val imageViewFlyer = dialogView.findViewById<ImageView>(R.id.imageViewFlyer)
 
-        Glide.with(context).load(userId).into(imageViewFlyer)
+        if (img != "loading...") {
+            Glide.with(context).load(img).into(imageViewFlyer)
+        } else {
+            imageViewFlyer.setImageResource(R.drawable.logo_img_base)
+        }
 
-        // Resto del código para configurar el diálogo
         val dialogBuilder = AlertDialog.Builder(context)
             .setView(dialogView)
             .setPositiveButton("Cerrar") { dialog, _ ->
@@ -66,5 +68,7 @@ class TournamentsDetailViewModel : ViewModel() {
         val dialog = dialogBuilder.create()
         dialog.show()
     }
+
+
 
 }

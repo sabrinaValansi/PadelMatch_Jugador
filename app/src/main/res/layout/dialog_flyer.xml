@@ -4,15 +4,20 @@
     android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-<!-- Layout principal -->
-<include layout="@layout/fragment_tournaments_detail" />
 
 <!-- Imagen del flyer -->
     <ImageView
         android:id="@+id/imageViewFlyer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        tools:srcCompat="@drawable/logo_img_base" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        />
 
 </RelativeLayout>
