@@ -523,9 +523,8 @@
             android:id="@+id/btnMapa"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="675dp"
-            android:layout_marginBottom="40dp"
-            android:layout_marginLeft="160dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginBottom="80dp"
             android:background="@drawable/mapafinal"
             android:onClick="openLocationOnMap"
             android:scaleType="fitXY"
@@ -550,8 +549,5 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </ScrollView>
