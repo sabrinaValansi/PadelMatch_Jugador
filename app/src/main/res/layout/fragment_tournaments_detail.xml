@@ -12,112 +12,10 @@
         android:layout_height="match_parent"
         android:background="#CEEDE6">
 
-
-        <TextView
-            android:id="@+id/tituloPremio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Premio"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textoCosto" />
-
-        <TextView
-            android:id="@+id/textoPremio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="2000"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tituloPremio" />
-
-        <TextView
-            android:id="@+id/tituloCosto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Costo Inscripcion"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cupos" />
-
-        <TextView
-            android:id="@+id/textoCosto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="2000"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tituloCosto" />
-
-        <TextView
-            android:id="@+id/detail_club_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="Chacarita"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInicio2" />
-
-        <TextView
-            android:id="@+id/textInicio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="32dp"
-            android:text="Club"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitulo" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Telefono"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_coor_name" />
-
-        <TextView
-            android:id="@+id/detail_coor_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="+5491125794876"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-
             android:layout_marginTop="20dp"
             android:background="#83D6C2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +23,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--Torneo Padel -->
+
+        <ImageView
+            android:id="@+id/flyer"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/torneo"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textTitulo"
@@ -132,268 +41,513 @@
             android:layout_height="52dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="0dp"
             android:text="Torneo de Padel"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            app:layout_constraintTop_toTopOf="@+id/view" />>
 
-        <!-- -->
-
-        <TextView
-            android:id="@+id/textInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Fecha de torneo"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_club_name" />
-
-        <TextView
-            android:id="@+id/fechaTorneo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="24/11/2023"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInicio" />
-
-
-        <TextView
-            android:id="@+id/textCategoria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Categoría"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fechaTorneo" />
-
-        <TextView
-            android:id="@+id/categoria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="C1"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textCategoria" />
-
-        <TextView
-            android:id="@+id/textHorario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Horario"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/categoria" />
-
-        <TextView
-            android:id="@+id/horario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="20:22Hs"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textHorario" />
-
-        <TextView
-            android:id="@+id/textDireccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Dirección"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horario" />
-
-        <TextView
-            android:id="@+id/direccion"
-            android:layout_width="wrap_content"
+        <!--card contenedora de iconos de texto primer columna-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat2"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="40dp"
-            android:autoText="false"
-            android:text="Calle falsa 123"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textDireccion"
-            app:layout_wrapBehaviorInParent="vertical_only" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <!--iconos -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="10"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textLocalidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Localidad"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/direccion" />
+                <ImageView
+                    android:id="@+id/icoClub"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="124dp"
+                    app:srcCompat="@drawable/club" />
 
-        <TextView
-            android:id="@+id/localidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="Springfield"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textLocalidad" />
+                <ImageView
+                    android:id="@+id/icoDireccion"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/baseline_location_on_24" />
 
-        <TextView
-            android:id="@+id/textCupos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Cupos"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/localidad" />
+                <ImageView
+                    android:id="@+id/icoCalendar"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="35dp"
+                    app:srcCompat="@drawable/baseline_calendar_month_24" />
 
-        <TextView
-            android:id="@+id/cupos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="2000"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textCupos" />
+                <ImageView
+                    android:id="@+id/icoMaterialDeCancha"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/baseline_sports_tennis_24" />
 
-        <TextView
-            android:id="@+id/textCancha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Material Cancha"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textoPremio" />
+                <ImageView
+                    android:id="@+id/icoCupo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/baseline_people_24" />
 
-        <TextView
-            android:id="@+id/cancha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:backgroundTint="#CEEDE6"
-            android:text="Pasto sintético"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textCancha" />
+                <ImageView
+                    android:id="@+id/icoPremio"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/premio" />
+
+                <ImageView
+                    android:id="@+id/icoCategoria"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    app:srcCompat="@drawable/baseline_account_tree_24" />
+
+                <ImageView
+                    android:id="@+id/icoCosto"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/baseline_monetization_on_24" />
+
+                <ImageView
+                    android:id="@+id/icoContacto"
+                    android:layout_width="35dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="1dp"
+                    app:srcCompat="@drawable/baseline_account_circle_24" />
+
+                <ImageButton
+                    android:id="@+id/btnInfo"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/infodef"
+                    android:onClick="mostrarInformacion"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <!--card contenedora -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!--input de iconos -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textClub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="120dp"
+                    android:text="Club"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/club"
+                    app:layout_wrapBehaviorInParent="vertical_only" />
+
+                <TextView
+                    android:id="@+id/club"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Chacarita"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textDireccion"
+                    app:layout_wrapBehaviorInParent="vertical_only" />
+
+                <TextView
+                    android:id="@+id/textDireccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Dirección"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/direccion" />
+                <TextView
+                    android:id="@+id/direccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Calle falsa 123"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/localidad"
+                    app:layout_wrapBehaviorInParent="vertical_only" />
+
+                <TextView
+                    android:id="@+id/localidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Springfield"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textFecha" />
+
+                <TextView
+                    android:id="@+id/textFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Fecha"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fechaTorneo" />
+                <TextView
+                    android:id="@+id/fechaTorneo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="24/11/2023"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textCancha" />
+
+                <TextView
+                    android:id="@+id/textCancha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Material Cancha"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cancha" />
+
+                <TextView
+                    android:id="@+id/cancha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:backgroundTint="#CEEDE6"
+                    android:text="Pasto sintético"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textCupos" />
+
+                <TextView
+                    android:id="@+id/textCupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Cupos"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cupos" />
+
+                <TextView
+                    android:id="@+id/cupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="72dp"
+                    android:text="28"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textPremio" />
+
+                <TextView
+                    android:id="@+id/textPremio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Premio"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textPremio" />
+
+                <TextView
+                    android:id="@+id/textoPremio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="3500"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textCategoria" />
+
+                <TextView
+                    android:id="@+id/textCategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Categoría"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/categoria" />
+
+                <TextView
+                    android:id="@+id/categoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="C1"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/costoInscripcion" />
+
+                <TextView
+                    android:id="@+id/costoInscripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Costo de Inscrición"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textCosto" />
+
+                <TextView
+                    android:id="@+id/textCosto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="2000"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/coordinador" />
+
+                <TextView
+                    android:id="@+id/coordinador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Coordinador"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_coor_name" />
+
+                <TextView
+                    android:id="@+id/detail_coor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="Alberto"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnInfo" />
 
 
-        <ImageButton
-            android:id="@+id/btnInfo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="80dp"
-            android:background="@drawable/infodef"
-            android:onClick="mostrarInformacion"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnInfo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cancha" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <ImageButton
-            android:id="@+id/btnWhatsapp"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="80dp"
-            android:background="@drawable/ic_whatsapp"
-            android:onClick="enviarMensajeWhatsapp"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnMapa"
-            app:layout_constraintTop_toBottomOf="@id/cancha" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--card contenedora input 2da columna-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!--input de iconos -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="10"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/horario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="240dp"
+                    android:layout_marginTop="265dp"
+                    android:text="20:22Hs"
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fechaTorneo"
+                    app:layout_wrapBehaviorInParent="vertical_only" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="230dp"
+                    android:layout_marginTop="305dp"
+                    android:text="Teléfono"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_coor_phone" />
+
+                <TextView
+                    android:id="@+id/detail_coor_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="230dp"
+                    android:text="+5491125794876"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_coor_name" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--card contenedora de iconos de segunda columna-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="10"
+                android:orientation="vertical">
+
+                <!--iconos 2da fila reloj-->
+
+                <ImageView
+                    android:id="@+id/icoReloj"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="260dp"
+                    android:layout_marginRight="192dp"
+                    app:srcCompat="@drawable/baseline_access_time_24" />
+
+                <ImageView
+                    android:id="@+id/icoTelefono"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="300dp"
+                    android:layout_marginStart="200dp"
+                    app:srcCompat="@drawable/baseline_phone_android_24" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageButton
             android:id="@+id/btnMapa"
             android:layout_width="48dp"
             android:layout_height="48dp"
-
-
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginTop="675dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="160dp"
             android:background="@drawable/mapafinal"
             android:onClick="openLocationOnMap"
-
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnWhatsapp"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btnInfo"
-            app:layout_constraintTop_toBottomOf="@id/cancha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="spread" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Coordinador"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancha" />
-
-        <TextView
-            android:id="@+id/detail_coor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="Alberto"
-            android:textColor="#666666"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <ImageButton
+            android:id="@+id/btnWhatsapp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/ic_whatsapp"
+            android:onClick="enviarMensajeWhatsapp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

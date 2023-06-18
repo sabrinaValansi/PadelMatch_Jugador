@@ -55,14 +55,14 @@ class TournamentsDetailFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_tournaments_detail, container, false)
 
-        detailClubNombre = v.findViewById(R.id.detail_club_name)
+        detailClubNombre = v.findViewById(R.id.club)
         detailTitulo = v.findViewById(R.id.textTitulo)
         detailFechaTorneo = v.findViewById(R.id.fechaTorneo)
         detailCategorias = v.findViewById(R.id.categoria)
         detailHorario = v.findViewById(R.id.horario)
         detailDireccion = v.findViewById(R.id.direccion)
         detailLocalidad = v.findViewById(R.id.localidad)
-        detailCosto = v.findViewById(R.id.textoCosto)
+        detailCosto = v.findViewById(R.id.textCosto)
         detailPremio = v.findViewById(R.id.textoPremio)
         detailCupos = v.findViewById(R.id.cupos)
         detailCancha = v.findViewById(R.id.cancha)
