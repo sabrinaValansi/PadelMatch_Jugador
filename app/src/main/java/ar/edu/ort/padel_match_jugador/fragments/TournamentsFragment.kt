@@ -1,5 +1,6 @@
 package ar.edu.ort.padel_match_jugador.fragments
 
+import TournamentsDetailViewModel
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -23,8 +24,14 @@ import kotlinx.coroutines.launch
 import android.widget.TextView.OnEditorActionListener
 import android.widget.TextView
 import android.view.KeyEvent
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import org.checkerframework.common.subtyping.qual.Bottom
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class TournamentsFragment : Fragment() {
 
@@ -34,6 +41,8 @@ class TournamentsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var list: MutableList<Tournament> = mutableListOf()
     private lateinit var boton: View
+    private var clubNames: MutableMap<String, String> = mutableMapOf()
+    private lateinit var detailViewModel: TournamentsDetailViewModel
 
     // Create connection with the database
     val db = Firebase.firestore
@@ -55,9 +64,20 @@ class TournamentsFragment : Fragment() {
         return v
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val filtersButton: ImageButton = view.findViewById(R.id.filters)
+        filtersButton.setOnClickListener {
+            findNavController().navigate(R.id.action_tournamentsFragment_to_filters)
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(TournamentsViewModel::class.java)
+        detailViewModel = ViewModelProvider(this).get(TournamentsDetailViewModel::class.java)
 
         // Get the search view from the layout
         val searchView = v.findViewById<SearchView>(R.id.search_view)
@@ -99,10 +119,19 @@ class TournamentsFragment : Fragment() {
     }
 
     private fun filterData(query: String) {
-        val filteredList = list.filter { tournament ->
-            tournament.titulo.contains(query, ignoreCase = true)
+        lifecycleScope.launch {
+            val filteredList = list.filter { tournament ->
+                val club = detailViewModel.getClubById(tournament.idClub)?.nombre ?: ""
+                tournament.titulo.contains(query, ignoreCase = true) ||
+                        club.contains(query, ignoreCase = true) ||
+                        tournament.categoría.contains(query, ignoreCase = true) ||
+                        tournament.fecha.contains(query, ignoreCase = true) ||
+                        tournament.hora.contains(query, ignoreCase = true) ||
+                        tournament.nombreCoordinador.contains(query, ignoreCase = true) ||
+                        tournament.telefonoCoordinador.contains(query, ignoreCase = true)
+            }
+            adapter.updateTournaments(filteredList)
         }
-        adapter.updateTournaments(filteredList)
     }
 
     private fun resetFilter() {
@@ -118,7 +147,15 @@ class TournamentsFragment : Fragment() {
         super.onStart()
 
         lifecycleScope.launch {
-            list = viewModel.getTournament()
+            val originalList = viewModel.getTournament()
+            val sortedList = originalList.sortedBy { parseDate(it.fecha) }
+            list.clear()
+            list.addAll(sortedList)
+            // Load all club names
+            for (tournament in list) {
+                val clubName = detailViewModel.getClubById(tournament.idClub)?.nombre
+                clubNames[tournament.idClub] = clubName ?: ""
+            }
             recyclerView.layoutManager = LinearLayoutManager(context)
             adapter = TournamentAdapter(requireContext()) { pos ->
                 onItemClick(pos)
@@ -127,6 +164,11 @@ class TournamentsFragment : Fragment() {
             recyclerView.adapter = adapter
         }
     }
+    private fun parseDate(dateString: String): Date {
+        val format = SimpleDateFormat("dd/mm/yyyy", Locale.getDefault())
+        return format.parse(dateString) ?: Date()
+    }
+
 
     private fun onItemClick(position: Int) {
         Log.w("POSICION", position.toString())

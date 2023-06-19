@@ -98,7 +98,7 @@ class Filters : Fragment() {
         }
     }
 
-    private fun timePickerHandler(timePicker: MaterialTimePicker, item: EditText){
+    fun timePickerHandler(timePicker: MaterialTimePicker, item: EditText){
         item.setOnClickListener {
             timePicker.show(requireActivity().supportFragmentManager, "tag")
             timePicker.addOnPositiveButtonClickListener {

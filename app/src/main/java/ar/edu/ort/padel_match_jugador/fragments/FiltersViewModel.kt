@@ -73,12 +73,12 @@ class FiltersViewModel : ViewModel() {
         horario?.let {
             query.whereEqualTo("hora", horario)
         }
-       /*  partido?.let {
-            query.whereEqualTo("partido", partido)
-        }
-        localidad?.let {
-            query.whereEqualTo("localidad", localidad)
-        } */
+        /*  partido?.let {
+             query.whereEqualTo("partido", partido)
+         }
+         localidad?.let {
+             query.whereEqualTo("localidad", localidad)
+         } */
         categoria?.let {
             query.whereEqualTo("categoria", categoria)
         }
@@ -88,7 +88,7 @@ class FiltersViewModel : ViewModel() {
 
         Log.w("TORNEOS FILTRADOS", result.documents.toString())
 
-       //  return matches
+        //  return matches
     }
 
 

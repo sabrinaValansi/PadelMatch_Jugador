@@ -10,14 +10,17 @@
         android:name="ar.edu.ort.padel_match_jugador.SplashActivity"
         android:label="activity_splash"
         tools:layout="@layout/activity_splash" />
+
     <fragment
         android:id="@+id/tournamentsFragment"
         android:name="ar.edu.ort.padel_match_jugador.fragments.TournamentsFragment"
         android:label="fragment_tournaments"
         tools:layout="@layout/fragment_tournaments">
+
         <action
             android:id="@+id/action_myTournamentsFragment_to_tournamentDetailFragment"
-            app:destination="@+id/tournamentsDetailFragment" />
+            app:destination="@id/tournamentsDetailFragment" />
+
         <action
             android:id="@+id/action_tournamentsFragment_to_filters"
             app:destination="@id/filters" />
@@ -33,6 +36,7 @@
             android:name="TournamentSelected"
             app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament" />
     </fragment>
+
     <fragment
         android:id="@+id/filters"
         android:name="ar.edu.ort.padel_match_jugador.fragments.Filters"

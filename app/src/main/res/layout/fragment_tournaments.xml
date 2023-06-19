@@ -11,7 +11,7 @@
         android:id="@+id/tv_tittle_tournament"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="45dp"
         android:background="#C7E3DC"
         android:text="Mis Torneos"
         android:textColor="@color/black"
@@ -23,20 +23,25 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
         android:background="#90C6C6C6"
-        android:baselineAligned="false"
         android:iconifiedByDefault="false"
         android:imeOptions="flagNoExtractUi"
         android:queryHint="@string/search"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_tittle_tournament" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_tournament" />
 
+    <ImageButton
+        android:id="@+id/filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tournament_list"
@@ -49,14 +54,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view" />
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
     <Button
         android:id="@+id/btn_filtros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Filtros"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="13dp" />
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#3354b4"
+        android:elevation="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/baseline_clear_all_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

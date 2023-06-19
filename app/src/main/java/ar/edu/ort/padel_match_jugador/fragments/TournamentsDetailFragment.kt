@@ -36,6 +36,8 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailDireccion: TextView
     private lateinit var detailLocalidad: TextView
     private lateinit var detailCupos: TextView
+    private lateinit var detailCosto: TextView
+    private lateinit var detailPremio: TextView
     private lateinit var detailCancha: TextView
     private lateinit var detailCoorName: TextView
     private lateinit var detailCoorPhone: TextView
@@ -53,13 +55,15 @@ class TournamentsDetailFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_tournaments_detail, container, false)
 
-        detailClubNombre = v.findViewById(R.id.detail_club_name)
+        detailClubNombre = v.findViewById(R.id.club)
         detailTitulo = v.findViewById(R.id.textTitulo)
         detailFechaTorneo = v.findViewById(R.id.fechaTorneo)
         detailCategorias = v.findViewById(R.id.categoria)
         detailHorario = v.findViewById(R.id.horario)
         detailDireccion = v.findViewById(R.id.direccion)
         detailLocalidad = v.findViewById(R.id.localidad)
+        detailCosto = v.findViewById(R.id.textCosto)
+        detailPremio = v.findViewById(R.id.textoPremio)
         detailCupos = v.findViewById(R.id.cupos)
         detailCancha = v.findViewById(R.id.cancha)
         btnInfo = v.findViewById(R.id.btnInfo)
@@ -113,9 +117,12 @@ class TournamentsDetailFragment : Fragment() {
         detailDireccion.text = clubSelected.direccionCompleta
         detailLocalidad.text = clubSelected.localidad
         detailCupos.text = tournamentSelected.cupos.toString()
+        detailCosto.text = tournamentSelected.costoInscripción.toString()
+        detailPremio.text = tournamentSelected.premios.toString()
         detailCancha.text = tournamentSelected.materialCancha
         detailCoorName.text = tournamentSelected.nombreCoordinador
         detailCoorPhone.text = tournamentSelected.telefonoCoordinador
+
         btnInfo = v.findViewById(R.id.btnInfo)
         btnWhatsapp = v.findViewById(R.id.btnWhatsapp)
         btnMapa = v.findViewById(R.id.btnMapa)
