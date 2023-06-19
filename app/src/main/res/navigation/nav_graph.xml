@@ -26,8 +26,7 @@
             app:destination="@id/filters" />
         <argument
             android:name="tournamentList"
-            app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament[]"
-            app:nullable="true" />
+            app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament[]" />
     </fragment>
 
     <fragment
