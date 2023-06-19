@@ -28,6 +28,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import org.checkerframework.common.subtyping.qual.Bottom
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -156,11 +157,21 @@ class TournamentsFragment : Fragment() {
                 val clubName = detailViewModel.getClubById(tournament.idClub)?.nombre
                 clubNames[tournament.idClub] = clubName ?: ""
             }
+
+
             recyclerView.layoutManager = LinearLayoutManager(context)
             adapter = TournamentAdapter(requireContext()) { pos ->
                 onItemClick(pos)
             }
-            adapter.updateTournaments(list) // Agregar esta línea para mostrar todas las tarjetas inicialmente
+
+            try{
+                val tournamentSelected =
+                    TournamentsFragmentArgs.fromBundle(requireArguments()).tournamentList
+                adapter.updateTournaments(tournamentSelected!!.toList())
+
+            } catch ( e: Exception ) {
+                adapter.updateTournaments(list)
+            }
             recyclerView.adapter = adapter
         }
     }

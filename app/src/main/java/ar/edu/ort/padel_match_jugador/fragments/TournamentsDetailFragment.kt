@@ -35,6 +35,7 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var detailHorario: TextView
     private lateinit var detailDireccion: TextView
     private lateinit var detailLocalidad: TextView
+    private lateinit var detailMaterial: TextView
     private lateinit var detailCupos: TextView
     private lateinit var detailCosto: TextView
     private lateinit var detailPremio: TextView
@@ -62,6 +63,7 @@ class TournamentsDetailFragment : Fragment() {
         detailHorario = v.findViewById(R.id.horario)
         detailDireccion = v.findViewById(R.id.direccion)
         detailLocalidad = v.findViewById(R.id.localidad)
+        detailMaterial = v.findViewById(R.id.cancha )
         detailCosto = v.findViewById(R.id.textCosto)
         detailPremio = v.findViewById(R.id.textoPremio)
         detailCupos = v.findViewById(R.id.cupos)
@@ -116,6 +118,7 @@ class TournamentsDetailFragment : Fragment() {
         detailHorario.text = tournamentSelected.hora
         detailDireccion.text = clubSelected.direccionCompleta
         detailLocalidad.text = clubSelected.localidad
+        detailMaterial.text = tournamentSelected.materialCancha
         detailCupos.text = tournamentSelected.cupos.toString()
         detailCosto.text = tournamentSelected.costoInscripción.toString()
         detailPremio.text = tournamentSelected.premios.toString()
