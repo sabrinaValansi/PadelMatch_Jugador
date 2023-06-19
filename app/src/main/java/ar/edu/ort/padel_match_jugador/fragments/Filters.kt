@@ -1,5 +1,6 @@
 package ar.edu.ort.padel_match_jugador.fragments
 
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.format.DateFormat
@@ -9,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.databinding.FragmentFiltersBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -38,6 +41,7 @@ class Filters : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FiltersViewModel::class.java)
@@ -61,27 +65,34 @@ class Filters : Fragment() {
                     val selecPartido = binding.filListaPartidos.text.toString()
                     val selecClubs = clubs.filter { t -> t.data["nombre"] == selecPartido }
 
-                    selecClubs.forEach{ t ->
+                    selecClubs.forEach { t ->
                         val lista = t.data["localidades"] as List<String>
                         val localidades = lista.toTypedArray()
-                        (binding.filListaLocalidades as? MaterialAutoCompleteTextView)?.setSimpleItems(localidades)
+                        (binding.filListaLocalidades as? MaterialAutoCompleteTextView)?.setSimpleItems(
+                            localidades
+                        )
                     }
                 }
 
             var data_cat = viewModel.getCategoriasList()
-            ( binding.editTextAddTournamentCategorias as? MaterialAutoCompleteTextView)?.setSimpleItems(data_cat)
+            (binding.editTextAddTournamentCategorias as? MaterialAutoCompleteTextView)?.setSimpleItems(
+                data_cat
+            )
         }
 
         binding.btnFiltrar.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.getFilteredMatches(
+                val lista = viewModel.getFilteredMatches(
                     binding.editTextFiltroFechaDesde.text.toString(),
                     binding.editTextFiltroFechaHasta.text.toString(),
-                    binding.editTextAddTournamentHorario.toString(),
+                    binding.editTextAddTournamentHorario.text.toString(),
                     binding.filListaPartidos.text.toString(),
                     binding.filListaLocalidades.text.toString(),
                     binding.editTextAddTournamentCategorias.text.toString()
                 )
+
+                val action = FiltersDirections.actionFiltersToTournamentsFragment( lista.toTypedArray() )
+                findNavController().navigate(action)
             }
         }
 
@@ -89,26 +100,32 @@ class Filters : Fragment() {
     }
 
     private fun datePickerHandler(datePicker: MaterialDatePicker<Long>, item: EditText) {
-        if( !datePicker.isAdded()) {
-            item.setOnClickListener{
-                datePicker.show(requireActivity().supportFragmentManager, "tag" )
+        if (!datePicker.isAdded()) {
+            item.setOnClickListener {
+                datePicker.show(requireActivity().supportFragmentManager, "tag")
                 datePicker.addOnPositiveButtonClickListener { selection ->
                     val dateString = DateFormat.format("dd/MM/yyyy", Date(selection)).toString()
                     item.setText(dateString)
                 }
 
             }
+        }
     }
 
-    private fun timePickerHandler(timePicker: MaterialTimePicker, item: EditText){
+    private fun timePickerHandler(timePicker: MaterialTimePicker, item: EditText) {
         item.setOnClickListener {
             timePicker.show(requireActivity().supportFragmentManager, "tag")
             timePicker.addOnPositiveButtonClickListener {
                 val hour = timePicker.hour
                 val minute = timePicker.minute
-                binding.editTextAddTournamentHorario.setText(String.format("%02d:%02d", hour, minute))
+                binding.editTextAddTournamentHorario.setText(
+                    String.format(
+                        "%02d:%02d",
+                        hour,
+                        minute
+                    )
+                )
             }
         }
     }
-
 }

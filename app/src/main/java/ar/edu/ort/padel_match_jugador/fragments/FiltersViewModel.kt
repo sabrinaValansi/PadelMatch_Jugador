@@ -1,6 +1,8 @@
 package ar.edu.ort.padel_match_jugador.fragments
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import ar.edu.ort.padel_match_jugador.entities.Tournament
 import com.google.android.material.datepicker.CalendarConstraints
@@ -12,7 +14,12 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 
 class FiltersViewModel : ViewModel() {
 
@@ -54,6 +61,7 @@ class FiltersViewModel : ViewModel() {
     }
 
     // En FiltersViewModel
+    @RequiresApi(Build.VERSION_CODES.O)
     suspend fun getFilteredMatches(
         fechaDesde: String?,
         fechaHasta: String?,
@@ -61,37 +69,17 @@ class FiltersViewModel : ViewModel() {
         partido: String?,
         localidad: String?,
         categoria: String?
-    ): List<Tournament> {
-        val query = db.collection("tournaments")
-
-        fechaDesde?.let {
-            query.whereGreaterThanOrEqualTo("fecha", fechaDesde)
-        }
-        fechaHasta?.let {
-            query.whereLessThanOrEqualTo("fecha", fechaHasta)
-        }
-        horario?.let {
-            query.whereEqualTo("hora", horario)
-        }
-        /*  partido?.let {
-             query.whereEqualTo("partido", partido)
-         }
-         localidad?.let {
-             query.whereEqualTo("localidad", localidad)
-         } */
-        categoria?.let {
-            query.whereEqualTo("categoria", categoria)
-        }
+    ): ArrayList<Tournament> {
+        var query = db.collection("tournaments")
 
         val result = query.get().await()
 
-        val list = arrayListOf<Tournament>()
+        var list = arrayListOf<Tournament>()
 
         result.forEach{ doc ->
-            val data = doc.data
+            val data = doc.data!!
             val id = data["id"] as String
             val titulo = data["titulo"] as String
-            val club = data["club"] as String
             val fecha = data["fecha"] as String
             val hora = data["hora"] as String
             val cat = data["categoría"] as String
@@ -100,7 +88,7 @@ class FiltersViewModel : ViewModel() {
             val material = data["materialCancha"] as String
             val premios = data["premios"] as String
             val imagenTorneo = data["imagenTorneo"] as String
-            val userId = data["uid"] as String
+            val userId = data["userId"] as String
             val idClub = data["idClub"] as String
             var nombreCoor = data["nombreCoordinador"] as String
             var telefonoCood =data["telefonoCoordinador"] as String
@@ -109,7 +97,37 @@ class FiltersViewModel : ViewModel() {
             list.add(torneo)
         }
 
-        Log.w("TORNEOS FILTRADOS", list.toString())
+
+        if ( !fechaDesde.isNullOrBlank() ) {
+            val formato = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val f2 = LocalDate.parse(fechaDesde, formato)
+            list = list.filter { d -> f2.isBefore(LocalDate.parse(d.fecha, formato)) }as ArrayList<Tournament>
+        }
+
+        if ( !fechaHasta.isNullOrBlank() ) {
+            val formato = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val f2 = LocalDate.parse(fechaHasta, formato)
+            list = list.filter { d -> f2.isAfter(LocalDate.parse(d.fecha, formato)) }as ArrayList<Tournament>
+        }
+
+
+        if ( !partido.isNullOrBlank() ) {
+            list = list.filter { d -> db.collection("clubs").document(d.idClub).get().await().data!!["partido"] == partido } as ArrayList<Tournament>
+
+            if ( !localidad.isNullOrBlank() ) {
+                list = list.filter { d -> db.collection("clubs").document(d.idClub).get().await().data!!["localidad"] == localidad } as ArrayList<Tournament>
+            }
+        }
+
+        if ( !horario.isNullOrBlank() ) {
+            list = list.filter { d -> d.hora == horario } as ArrayList<Tournament>
+        }
+
+        if ( !categoria.isNullOrBlank() ) {
+            list = list.filter { d -> d.categoría == categoria } as ArrayList<Tournament>
+        }
+
+        Log.w("LISTA FILTRADA", list.toString())
 
         return list
     }

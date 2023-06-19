@@ -160,6 +160,15 @@ class TournamentsFragment : Fragment() {
             adapter = TournamentAdapter(requireContext()) { pos ->
                 onItemClick(pos)
             }
+
+
+           /* if (  TournamentsFragmentArgs.fromBundle(requireArguments()).tournamentList != null) {
+                val tournamentSelected =
+                    TournamentsFragmentArgs.fromBundle(requireArguments()).tournamentList
+                Log.w(" LISTA FILTRADA !", tournamentSelected.toString())
+            } */
+            // adapter.updateTournaments( tournamentSelected.  )
+
             adapter.updateTournaments(list) // Agregar esta línea para mostrar todas las tarjetas inicialmente
             recyclerView.adapter = adapter
         }
