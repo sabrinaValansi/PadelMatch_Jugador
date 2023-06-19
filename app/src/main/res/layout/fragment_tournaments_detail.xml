@@ -10,7 +10,8 @@
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CEEDE6">
+        android:background="#CEEDE6"
+        tools:ignore="ExtraText">
 
         <View
             android:id="@+id/view"
@@ -158,7 +159,8 @@
                     android:background="@drawable/infodef"
                     android:onClick="mostrarInformacion"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -537,20 +539,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintWidth_default="spread" />
+            app:layout_constraintWidth_default="spread"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/btnWhatsapp"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="100dp"
             android:layout_marginRight="70dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/ic_whatsapp"
             android:onClick="enviarMensajeWhatsapp"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
