@@ -180,7 +180,6 @@ class TournamentsFragment : Fragment() {
         return format.parse(dateString) ?: Date()
     }
 
-
     private fun onItemClick(position: Int) {
         Log.w("POSICION", position.toString())
         Log.w("LISTA", list.toString())

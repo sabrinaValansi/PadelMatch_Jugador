@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.timepicker.MaterialTimePicker
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -112,8 +113,14 @@ class Filters : Fragment() {
             item.setOnClickListener {
                 datePicker.show(requireActivity().supportFragmentManager, "tag")
                 datePicker.addOnPositiveButtonClickListener { selection ->
-                    val dateString = DateFormat.format("dd/MM/yyyy", Date(selection)).toString()
-                    item.setText(dateString)
+                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val date = Date(selection)
+                    val calendar = Calendar.getInstance()
+                    calendar.time = date
+                    calendar.add(Calendar.DAY_OF_MONTH, 1)
+                    val nuevaFecha = calendar.time
+                    val nuevaFechaString = formatoFecha.format(nuevaFecha)
+                    item.setText(nuevaFechaString)
                 }
 
             }
