@@ -2,6 +2,7 @@ package ar.edu.ort.padel_match_jugador.fragments
 
 import android.icu.text.CaseMap.Lower
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ar.edu.ort.padel_match_jugador.entities.Club
@@ -17,7 +18,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TournamentsViewModel : ViewModel() {
-    private lateinit var tournamentList: MutableLiveData<MutableList<Tournament>>
     val db = Firebase.firestore
 
     private var auth: FirebaseAuth = Firebase.auth

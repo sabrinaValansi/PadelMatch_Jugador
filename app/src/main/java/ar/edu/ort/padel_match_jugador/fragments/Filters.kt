@@ -29,6 +29,7 @@ class Filters : Fragment() {
     }
 
     private lateinit var viewModel: FiltersViewModel
+    private lateinit var viewModel2: TournamentsViewModel
     private lateinit var binding: FragmentFiltersBinding
 
     override fun onCreateView(
@@ -37,7 +38,6 @@ class Filters : Fragment() {
     ): View? {
         binding = FragmentFiltersBinding.inflate(inflater, container, false)
 
-
         return binding.root
     }
 
@@ -45,6 +45,8 @@ class Filters : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FiltersViewModel::class.java)
+        viewModel2 = ViewModelProvider(this).get(TournamentsViewModel::class.java)
+
         val datePicker = viewModel.createDatePicker()
         datePickerHandler(datePicker, binding.editTextFiltroFechaDesde)
         datePickerHandler(datePicker, binding.editTextFiltroFechaHasta)
@@ -90,8 +92,7 @@ class Filters : Fragment() {
                     binding.filListaLocalidades.text.toString(),
                     binding.editTextAddTournamentCategorias.text.toString()
                 )
-
-                val action = FiltersDirections.actionFiltersToTournamentsFragment( lista.toTypedArray() )
+                val action = FiltersDirections.actionFiltersToTournamentsFragment(lista.toTypedArray())
                 findNavController().navigate(action)
             }
         }

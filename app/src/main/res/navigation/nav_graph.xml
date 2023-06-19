@@ -26,7 +26,8 @@
             app:destination="@id/filters" />
         <argument
             android:name="tournamentList"
-            app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament[]" />
+            app:argType="ar.edu.ort.padel_match_jugador.entities.Tournament[]"
+            app:nullable="true" />
     </fragment>
 
     <fragment
@@ -44,7 +45,7 @@
         android:id="@+id/filters"
         android:name="ar.edu.ort.padel_match_jugador.fragments.Filters"
         android:label="fragment_filters"
-        tools:layout="@layout/fragment_filters" >
+        tools:layout="@layout/fragment_filters">
         <action
             android:id="@+id/action_filters_to_tournamentsFragment"
             app:destination="@id/tournamentsFragment" />
