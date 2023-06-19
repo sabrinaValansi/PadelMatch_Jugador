@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.databinding.FragmentFiltersBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -85,7 +86,14 @@ class Filters : Fragment() {
             }
         }
 
+        handlerBackToTournaments()
 
+    }
+
+    private fun handlerBackToTournaments() {
+        binding.closeButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun datePickerHandler(datePicker: MaterialDatePicker<Long>, item: EditText) {
