@@ -47,9 +47,6 @@ class TournamentsDetailFragment : Fragment() {
     private lateinit var btnWhatsapp: AppCompatImageButton
     private lateinit var btnMapa: AppCompatImageButton
 
-    private var auth: FirebaseAuth = Firebase.auth
-    private val db = Firebase.firestore
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

@@ -21,6 +21,7 @@ class TournamentAdapter(
 
     val db = Firebase.firestore
 
+    // devuelve una imstancia de TournamenteViewHolder. es para crear una nueva vista para representar un elemento de la vista
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TournamentViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.tournament_item, parent, false)
         return TournamentViewHolder(view)
@@ -31,7 +32,7 @@ class TournamentAdapter(
         holder.bind(tournament)
         holder.itemView.setOnClickListener { onItemClick(position) }
     }
-
+    // bind se utiliza para enlazar los datos de un objeto torneo con las vista del itemView del recycler view
     inner class TournamentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(tournament: Tournament) {
 
@@ -68,7 +69,7 @@ class TournamentAdapter(
             return oldItem.id == newItem.id
 
         }
-
+        // compara si los objetos son iguales o sufrieron cambios
         override fun areContentsTheSame(oldItem: Tournament, newItem: Tournament): Boolean {
             return oldItem == newItem
         }

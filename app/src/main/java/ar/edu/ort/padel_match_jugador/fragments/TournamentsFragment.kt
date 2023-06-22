@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,23 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.padel_match_jugador.R
 import ar.edu.ort.padel_match_jugador.adapter.TournamentAdapter
 import ar.edu.ort.padel_match_jugador.entities.Tournament
-import ar.edu.ort.padel_match_jugador.fragments.TournamentsFragmentDirections
-import ar.edu.ort.padel_match_jugador.fragments.TournamentsViewModel
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
-import android.widget.TextView.OnEditorActionListener
-import android.widget.TextView
 import android.view.KeyEvent
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
-import org.checkerframework.common.subtyping.qual.Bottom
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
 
 class TournamentsFragment : Fragment() {
 
@@ -44,9 +34,6 @@ class TournamentsFragment : Fragment() {
     private lateinit var boton: View
     private var clubNames: MutableMap<String, String> = mutableMapOf()
     private lateinit var detailViewModel: TournamentsDetailViewModel
-
-    // Create connection with the database
-    val db = Firebase.firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -144,6 +131,7 @@ class TournamentsFragment : Fragment() {
         Log.d("TournamentsFragment", "Perform search for query: $query")
     }
 
+    // ordeno la lista de torneos por fecha
     override fun onStart() {
         super.onStart()
 
@@ -175,14 +163,15 @@ class TournamentsFragment : Fragment() {
             recyclerView.adapter = adapter
         }
     }
+
+    // convierto la fecha de string a date
     private fun parseDate(dateString: String): Date {
         val format = SimpleDateFormat("dd/mm/yyyy", Locale.getDefault())
         return format.parse(dateString) ?: Date()
     }
 
+    // por la posicion del turno me redirige al detalle del mismo
     private fun onItemClick(position: Int) {
-        Log.w("POSICION", position.toString())
-        Log.w("LISTA", list.toString())
         val action =
             TournamentsFragmentDirections.actionMyTournamentsFragmentToTournamentDetailFragment(list[position])
         findNavController().navigate(action)

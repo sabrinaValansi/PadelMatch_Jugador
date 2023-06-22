@@ -22,6 +22,7 @@ class TournamentsViewModel : ViewModel() {
 
     private var auth: FirebaseAuth = Firebase.auth
 
+    // busca en la base los torneos asociados al id del usuario y trae el listado de los torneos que tiene el usuario.
     suspend fun getTournament(): MutableList<Tournament> {
 
         var list = mutableListOf<Tournament>();
