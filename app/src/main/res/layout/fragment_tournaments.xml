@@ -7,31 +7,52 @@
     android:background="#C7E3DC"
     tools:context=".fragments.TournamentsFragment">
 
+
+    <View
+        android:layout_width="158dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="56dp"
+        android:background="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
+    <View
+        android:layout_width="166dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
     <TextView
         android:id="@+id/tv_tittle_tournament"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="31dp"
         android:background="#C7E3DC"
-        android:text="Mis Torneos"
+        android:gravity="center"
+        android:text="Torneos "
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:background="#90C6C6C6"
+        android:layout_width="296dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_rounded"
         android:iconifiedByDefault="false"
         android:imeOptions="flagNoExtractUi"
         android:queryHint="@string/search"
+        app:layout_constraintEnd_toStartOf="@+id/btn_filtros"
+        app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_tournament" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/filters"
@@ -48,20 +69,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_tournament" />
 
     <Button
         android:id="@+id/btn_filtros"
         android:layout_width="55dp"
         android:layout_height="49dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="#3354b4"
         android:elevation="10dp"
         android:textColor="#FFFFFF"
