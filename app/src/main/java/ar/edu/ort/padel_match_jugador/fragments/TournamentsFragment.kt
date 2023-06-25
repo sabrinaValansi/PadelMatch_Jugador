@@ -157,8 +157,7 @@ class TournamentsFragment : Fragment() {
                 val clubName = detailViewModel.getClubById(tournament.idClub)?.nombre
                 clubNames[tournament.idClub] = clubName ?: ""
             }
-
-
+            
             recyclerView.layoutManager = LinearLayoutManager(context)
             adapter = TournamentAdapter(requireContext()) { pos ->
                 onItemClick(pos)

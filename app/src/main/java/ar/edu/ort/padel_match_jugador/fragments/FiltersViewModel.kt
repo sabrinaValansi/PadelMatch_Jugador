@@ -48,7 +48,6 @@ class FiltersViewModel : ViewModel() {
     suspend fun getPartidosList(): QuerySnapshot {
         val query =  db.collection("partidos")
         val clubs = query.get().await();
-
         return clubs;
     }
 

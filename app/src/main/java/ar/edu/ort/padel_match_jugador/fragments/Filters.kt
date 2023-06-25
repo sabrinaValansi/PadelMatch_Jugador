@@ -85,23 +85,62 @@ class Filters : Fragment() {
             )
         }
 
-        binding.btnFiltrar.setOnClickListener {
-            lifecycleScope.launch {
-                val lista = viewModel.getFilteredMatches(
-                    binding.editTextFiltroFechaDesde.text.toString(),
-                    binding.editTextFiltroFechaHasta.text.toString(),
-                    binding.editTextAddTournamentHorario.text.toString(),
-                    binding.filListaPartidos.text.toString(),
-                    binding.filListaLocalidades.text.toString(),
-                    binding.editTextAddTournamentCategorias.text.toString()
-                )
-                val action = FiltersDirections.actionFiltersToTournamentsFragment(lista.toTypedArray())
-                findNavController().navigate(action)
-            }
-        }
+        handlerFilter()
+
+        handlerDeleteFilters()
 
         handlerBackToTournaments()
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun handlerFilter() {
+        binding.btnFiltrar.setOnClickListener {
+            filter()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun handlerDeleteFilters() {
+        binding.btnBorrar.setOnClickListener {
+            clearInputs()
+            clearInputsFocus()
+            filter()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun filter(){
+        lifecycleScope.launch {
+            val lista = viewModel.getFilteredMatches(
+                binding.editTextFiltroFechaDesde.text.toString(),
+                binding.editTextFiltroFechaHasta.text.toString(),
+                binding.editTextAddTournamentHorario.text.toString(),
+                binding.filListaPartidos.text.toString(),
+                binding.filListaLocalidades.text.toString(),
+                binding.editTextAddTournamentCategorias.text.toString()
+            )
+            val action = FiltersDirections.actionFiltersToTournamentsFragment(lista.toTypedArray())
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun clearInputsFocus() {
+        binding.editTextFiltroFechaDesde.clearFocus()
+        binding.editTextFiltroFechaHasta.clearFocus()
+        binding.editTextAddTournamentHorario.clearFocus()
+        binding.filListaPartidos.clearFocus()
+        binding.filListaLocalidades.clearFocus()
+        binding.editTextAddTournamentCategorias.clearFocus()
+    }
+
+    private fun clearInputs() {
+        binding.editTextFiltroFechaDesde.setText("")
+        binding.editTextFiltroFechaHasta.setText("")
+        binding.editTextAddTournamentHorario.setText("")
+        binding.filListaPartidos.setText("")
+        binding.filListaLocalidades.setText("")
+        binding.editTextAddTournamentCategorias.setText("")
     }
 
     private fun handlerBackToTournaments() {
