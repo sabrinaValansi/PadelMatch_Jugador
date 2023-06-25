@@ -166,6 +166,7 @@ class TournamentsFragment : Fragment() {
             try{
                 val tournamentSelected =
                     TournamentsFragmentArgs.fromBundle(requireArguments()).tournamentList
+                list = tournamentSelected!!.toMutableList();
                 adapter.updateTournaments(tournamentSelected!!.toList())
 
             } catch ( e: Exception ) {
