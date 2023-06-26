@@ -48,9 +48,11 @@ class Filters : Fragment() {
         viewModel = ViewModelProvider(this).get(FiltersViewModel::class.java)
         viewModel2 = ViewModelProvider(this).get(TournamentsViewModel::class.java)
 
-        val datePicker = viewModel.createDatePicker()
-        datePickerHandler(datePicker, binding.editTextFiltroFechaDesde)
-        datePickerHandler(datePicker, binding.editTextFiltroFechaHasta)
+        val datePickerDesde = viewModel.createDatePicker()
+        datePickerHandler(datePickerDesde, binding.editTextFiltroFechaDesde)
+
+        val datePickerHasta = viewModel.createDatePicker()
+        datePickerHandler(datePickerHasta, binding.editTextFiltroFechaHasta)
 
         val timePicker = viewModel.createTimePicker()
         timePickerHandler(timePicker, binding.editTextAddTournamentHorario)
